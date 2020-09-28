@@ -1,19 +1,49 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <MedicineList v-bind:medicineList="medicineList" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MedicineList from "./components/MedicineList";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    //Header
+    MedicineList,
+  },
+  data() {
+    return {
+      medicineList: [
+        {
+          id: 1,
+          name: "med1",
+        },
+        {
+          id: 2,
+          name: "med2",
+        },
+        {
+          id: 3,
+          name: "med3",
+        },
+        {
+          id: 4,
+          name: "med4",
+        },
+        {
+          id: 5,
+          name: "med5",
+        },
+        {
+          id: 6,
+          name: "med6",
+        },
+      ],
+    };
+  },
+};
 </script>
 
 <style>
