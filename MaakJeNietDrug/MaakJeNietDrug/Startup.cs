@@ -26,6 +26,7 @@ namespace MaakJeNietDrug
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSpaStaticFiles(options => options.RootPath = "drug-frontend/dist");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +46,18 @@ namespace MaakJeNietDrug
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            // add following statements
+            app.UseSpaStaticFiles();
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "drug-frontend";
+                if (env.IsDevelopment())
+                {
+                    // Launch development server for Vue.js
+                    spa.UseVueDevelopmentServer();
+                }
             });
         }
     }
