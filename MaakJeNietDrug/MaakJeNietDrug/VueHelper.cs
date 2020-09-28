@@ -39,7 +39,7 @@ namespace MaakJeNietDrug
                 {
                     FileName = isWindows ? "cmd" : "npm",
                     Arguments = $"{(isWindows ? "/c npm " : "")}run serve",
-                    WorkingDirectory = "../../drug-frontend",
+                    WorkingDirectory = "drug-frontend",
                     RedirectStandardError = true,
                     RedirectStandardInput = true,
                     RedirectStandardOutput = true,
