@@ -1,10 +1,13 @@
 <template>
-    <div>
-        <p>
-            {{medicine.id}}
-            <br/>
-            {{medicine.name}}
-        </p>
+    <div class="card mt-5">
+<tr >
+    <td>{{medicine.id}}</td>
+</tr>
+<tr>
+    
+        <td>{{medicine.name}}</td>
+</tr>
+        
     </div>
 </template>
 
@@ -20,5 +23,8 @@ export default {
 </script>
 
 <style scoped>
+tr{
+width: 100%;
+}
 
 </style>
