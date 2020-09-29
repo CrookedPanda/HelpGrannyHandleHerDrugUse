@@ -12,7 +12,6 @@ namespace MaakJeNietDrugAPI.ClassesLogic
         public MedicineCollection()
         {
             medicineList = new List<Medicine>();
-            int test = 3;
         }
 
         public void Add(Medicine med)
