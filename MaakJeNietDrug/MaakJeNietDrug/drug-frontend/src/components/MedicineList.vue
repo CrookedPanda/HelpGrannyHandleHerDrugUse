@@ -5,6 +5,9 @@
          <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
           Info modal
         </b-button>
+         <b-button size="sm" @click="deleteMed(row.item, row.index, $event.target)" class="mr-1">
+            Delete
+        </b-button>
       </template>
         
     </b-table>
@@ -33,7 +36,11 @@ export default {
   methods:{
     info: function(obj){
       console.log(obj.id);
+    },
+    deleteMed: function(obj, index){
+    this.medicineList.splice(index, 1);
     }
+    
   }
 
 };
