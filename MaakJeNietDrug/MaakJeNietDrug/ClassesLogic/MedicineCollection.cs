@@ -56,14 +56,7 @@ namespace MaakJeNietDrugAPI.ClassesLogic
                 }
             }
 
-            if(medicine != null)
-            {
-                return medicine;
-            }
-            else
-            {
-                return null;
-            }
+            return medicine;
         }
 
 
