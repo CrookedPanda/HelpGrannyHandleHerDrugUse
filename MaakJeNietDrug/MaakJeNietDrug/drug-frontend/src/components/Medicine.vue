@@ -1,24 +1,22 @@
 <template>
-    <div>
-        <p>
-            {{medicine.id}}
-            <br/>
-            {{medicine.name}}
-        </p>
-    </div>
+<div>
+    
+      <btd >
+      {{ medicine.id }}
+      </btd><btd >
+      {{ medicine.name }}
+      </btd>
+
+</div>
 </template>
 
 <script>
 export default {
-    name: "Medicine",
-    props: ["medicine"],
-    methods: {
-
-    },
-
-}
+  name: "Medicine",
+  props: ["medicine"],
+  methods: {},
+};
 </script>
 
 <style scoped>
-
 </style>

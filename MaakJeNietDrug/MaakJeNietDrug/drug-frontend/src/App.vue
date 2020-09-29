@@ -1,6 +1,16 @@
+
 <template>
+
   <div id="app">
-    <MedicineList v-bind:medicineList="medicineList" />
+    
+    <div class="container">
+      <div class="card mt-5">
+        
+        <h2 class="card-header">Your medicines</h2>
+        <MedicineList v-bind:medicineList="medicineList"/>
+      
+      </div>
+    </div>
   </div>
 </template>
 
@@ -17,7 +27,7 @@ export default {
     return {
       medicineList: [
         {
-          id: 1,
+          id: 100,
           name: "med1",
         },
         {
@@ -55,4 +65,6 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+
 </style>
