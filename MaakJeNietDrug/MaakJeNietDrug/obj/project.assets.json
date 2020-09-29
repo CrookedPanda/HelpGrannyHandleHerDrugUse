@@ -698,9 +698,15 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< Updated upstream
       "projectUniqueName": "D:\\1School\\Group\\Git\\HelpGrannyHandleHerDrugUse\\MaakJeNietDrug\\MaakJeNietDrug\\MaakJeNietDrug.csproj",
       "projectName": "MaakJeNietDrug",
       "projectPath": "D:\\1School\\Group\\Git\\HelpGrannyHandleHerDrugUse\\MaakJeNietDrug\\MaakJeNietDrug\\MaakJeNietDrug.csproj",
+=======
+      "projectUniqueName": "D:\\1School\\Group\\Git\\HelpGrannyHandleHerDrugUse\\MaakJeNietDrug\\MaakJeNietDrug\\MaakJeNietDrugAPI.csproj",
+      "projectName": "MaakJeNietDrugAPI",
+      "projectPath": "D:\\1School\\Group\\Git\\HelpGrannyHandleHerDrugUse\\MaakJeNietDrug\\MaakJeNietDrug\\MaakJeNietDrugAPI.csproj",
+>>>>>>> Stashed changes
       "packagesPath": "C:\\Users\\Steve\\.nuget\\packages\\",
       "outputPath": "D:\\1School\\Group\\Git\\HelpGrannyHandleHerDrugUse\\MaakJeNietDrug\\MaakJeNietDrug\\obj\\",
       "projectStyle": "PackageReference",

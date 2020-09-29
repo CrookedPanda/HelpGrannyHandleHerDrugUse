@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< Updated upstream
   "dgSpecHash": "4rLsZ4Rml1Fb04yjPzAwYQw8Oi9Iu6k97wPUK3NO+56saAqXJvpZbV5FzIvC0Cks4w9L/ni3PFap4TvQSNAewg==",
   "success": true,
   "projectFilePath": "D:\\1School\\Group\\Git\\HelpGrannyHandleHerDrugUse\\MaakJeNietDrug\\MaakJeNietDrug\\MaakJeNietDrug.csproj",
+=======
+  "dgSpecHash": "7U+/4sbwUx/jog4zEVAa5angfGQ1mn2wzCS8ohmn2Ip/eoa/Ccz4oLeAxJjbqfr9MV/aqyBe04AqcmZ4BUn0sg==",
+  "success": true,
+  "projectFilePath": "D:\\1School\\Group\\Git\\HelpGrannyHandleHerDrugUse\\MaakJeNietDrug\\MaakJeNietDrug\\MaakJeNietDrugAPI.csproj",
+>>>>>>> Stashed changes
   "expectedPackageFiles": [
     "C:\\Users\\Steve\\.nuget\\packages\\microsoft.aspnetcore.nodeservices\\3.0.0-preview6.19307.2\\microsoft.aspnetcore.nodeservices.3.0.0-preview6.19307.2.nupkg.sha512",
     "C:\\Users\\Steve\\.nuget\\packages\\microsoft.aspnetcore.spaservices\\3.0.0-preview6.19307.2\\microsoft.aspnetcore.spaservices.3.0.0-preview6.19307.2.nupkg.sha512",
