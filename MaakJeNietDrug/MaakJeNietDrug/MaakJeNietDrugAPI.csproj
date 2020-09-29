@@ -7,6 +7,7 @@
     <IsPackable>false</IsPackable>
     <SpaRoot>drug-frontend\</SpaRoot>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+    <UserSecretsId>7e1a01fc-bbd5-464a-bc2d-09ff7e40df31</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
