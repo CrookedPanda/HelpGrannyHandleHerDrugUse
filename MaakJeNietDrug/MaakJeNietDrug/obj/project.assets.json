@@ -692,23 +692,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\TheCuddlePanda\\.nuget\\packages\\": {},
+    "C:\\Users\\Steve\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Semester3\\Proftaak\\HelpGrannyHandleHerDrugUse\\MaakJeNietDrug\\MaakJeNietDrug\\MaakJeNietDrug.csproj",
+      "projectUniqueName": "D:\\1School\\Group\\Git\\HelpGrannyHandleHerDrugUse\\MaakJeNietDrug\\MaakJeNietDrug\\MaakJeNietDrug.csproj",
       "projectName": "MaakJeNietDrug",
-      "projectPath": "D:\\Semester3\\Proftaak\\HelpGrannyHandleHerDrugUse\\MaakJeNietDrug\\MaakJeNietDrug\\MaakJeNietDrug.csproj",
-      "packagesPath": "C:\\Users\\TheCuddlePanda\\.nuget\\packages\\",
-      "outputPath": "D:\\Semester3\\Proftaak\\HelpGrannyHandleHerDrugUse\\MaakJeNietDrug\\MaakJeNietDrug\\obj\\",
+      "projectPath": "D:\\1School\\Group\\Git\\HelpGrannyHandleHerDrugUse\\MaakJeNietDrug\\MaakJeNietDrug\\MaakJeNietDrug.csproj",
+      "packagesPath": "C:\\Users\\Steve\\.nuget\\packages\\",
+      "outputPath": "D:\\1School\\Group\\Git\\HelpGrannyHandleHerDrugUse\\MaakJeNietDrug\\MaakJeNietDrug\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\TheCuddlePanda\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Steve\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
