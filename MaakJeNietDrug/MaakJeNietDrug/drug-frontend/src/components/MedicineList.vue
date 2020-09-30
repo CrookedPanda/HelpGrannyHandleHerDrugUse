@@ -2,7 +2,7 @@
     <div>
     <b-table striped hover :items="medicineList" :fields=fields>
       <template v-slot:cell(btn)="row">
-         <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
+         <b-button size="sm" @click="info(row.item, $event.target)" class="mr-1">
           Info modal
         </b-button>
         <b-button size="sm" @click="deleteMed(row.item, $event.target)" class="mr-1">
@@ -37,7 +37,7 @@ export default {
   },
   methods:{
     info: function(obj){
-      console.log(obj);
+      this.$emit("inspect-medicine", obj)
     },
     deleteMed: function(obj){
       this.$emit("del-medicine", obj);

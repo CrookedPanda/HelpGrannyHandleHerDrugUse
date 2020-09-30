@@ -10,7 +10,7 @@
       <div class="card mt-5">
         
         <h2 class="card-header">Your medicines</h2>
-        <MedicineList v-bind:medicineList="medicineList"  v-on:del-medicine="DeleteMed"/>
+        <MedicineList v-bind:medicineList="medicineList" v-on:inspect-medicine="InspectMedicine" v-on:del-medicine="DeleteMed"/>
       
       </div>
     </div>
@@ -33,7 +33,7 @@ export default {
   },
   data() {
     return {
-            medicineList: [],
+      medicineList: [],
       showNewMed: false,
       
 
@@ -55,6 +55,9 @@ export default {
     ToggleNMS() {
       this.showNewMed = !this.showNewMed;
     },
+    InspectMedicine(obj){
+      console.log("inspect button clicked on: " + obj.id);
+    }
   },
   // THIS CODE RUNS WHEN A NEW VUE INSTANCE IS CREATED (AKA WHEN THE TABLE IS CALLED FIRST)
   created(){
