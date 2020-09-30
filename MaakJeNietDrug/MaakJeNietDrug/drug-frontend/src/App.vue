@@ -2,7 +2,9 @@
 <template>
 
   <div id="app">
-    
+        <label  @click="ToggleNMS">Toggle adding screen</label>
+    <AddNewMedicine v-on:add-medicine="AddNewMed" v-if="showNewMed" /> 
+
     <div class="container">
       <div class="card mt-5">
         
@@ -16,43 +18,65 @@
 
 <script>
 import MedicineList from "./components/MedicineList";
+import AddNewMedicine from "./components/AddNewMedicine";
+import axios from "axios"
 
 export default {
   name: "App",
   components: {
     //Header
     MedicineList,
+    AddNewMedicine,
   },
   data() {
     return {
-      medicineList: [
+            medicineList: [
         {
           id: 100,
-          name: "med1",
+          title: "med1",
+          description: "test1"
         },
         {
           id: 2,
-          name: "med2",
+          title: "med2",
+          description: "test2"
         },
         {
           id: 3,
-          name: "med3",
+          title: "med3",
+          description: "test3"
         },
         {
           id: 4,
-          name: "med4",
+          title: "med4",
+          description: "test4"
         },
         {
           id: 5,
-          name: "med5",
+          title: "med5",
+          description: "test5"
         },
         {
           id: 6,
-          name: "med6",
+          title: "med6",
+          description: "test6"
         },
       ],
+      showNewMed: false,
+      
+
     };
   },
+  methods: {
+    AddNewMed(newMed) {
+      //const{id, title, description} = newMed;
+      this.medicineList = [...this.medicineList, newMed];
+    },
+    ToggleNMS() {
+      this.showNewMed = !this.showNewMed;
+    }
+  }
+
 };
 </script>
 
