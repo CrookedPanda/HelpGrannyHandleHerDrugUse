@@ -61,9 +61,7 @@ export default {
               this.deleteMed(obj)
             }
           })
-          .catch(err => {
-            // An error occurred
-          })
+          .catch(err=>console.log(err))
       }
   }
 
