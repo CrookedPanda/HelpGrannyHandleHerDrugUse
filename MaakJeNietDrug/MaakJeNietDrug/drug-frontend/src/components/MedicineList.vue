@@ -5,7 +5,7 @@
          <b-button size="sm" @click="info(row.item, $event.target)" class="mr-1">
           Info modal
         </b-button>
-        <b-button size="sm" @click="deleteMed(row.item, $event.target)" class="mr-1">
+        <b-button size="sm" @click="showMsgBoxTwo(row.item, $event.target)" class="mr-1">
           Delete
         </b-button>
       </template>
@@ -42,7 +42,29 @@ export default {
     deleteMed: function(obj){
       this.$emit("del-medicine", obj);
     },
-
+ showMsgBoxTwo: function(obj) {
+        this.boxTwo = ''
+        this.$bvModal.msgBoxConfirm('Are you sure you want to delete ' + obj.name + ' from your medicine List?', {
+          title: 'Please Confirm',
+          size: 'sm',
+          buttonSize: 'sm',
+          okVariant: 'danger',
+          okTitle: 'YES',
+          cancelTitle: 'NO',
+          footerClass: 'p-2',
+          hideHeaderClose: false,
+          centered: true
+        })
+          .then(value => {
+            this.boxTwo = value
+            if (value == true) {
+              this.deleteMed(obj)
+            }
+          })
+          .catch(err => {
+            // An error occurred
+          })
+      }
   }
 
 };
