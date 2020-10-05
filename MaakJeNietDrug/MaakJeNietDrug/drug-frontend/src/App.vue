@@ -3,57 +3,68 @@
 
   <div id="app">
     
+        <label  @click="ToggleNMS">Klik hier om het toevoeg scherm te laten zien / te verbergen</label>
+    <AddNewMedicine v-on:add-medicine="AddNewMed" v-if="showNewMed" /> 
+
     <div class="container">
       <div class="card mt-5">
         
-        <h2 class="card-header">Your medicines</h2>
-        <MedicineList v-bind:medicineList="medicineList"/>
+        <h2 class="card-header">Uw medicijnen</h2>
+        <MedicineList v-bind:medicineList="medicineList" v-on:inspect-medicine="InspectMedicine" v-on:del-medicine="DeleteMed"/>
       
       </div>
     </div>
   </div>
 </template>
 
+
+
 <script>
 import MedicineList from "./components/MedicineList";
+import AddNewMedicine from "./components/AddNewMedicine";
+import axios from "axios"
 
 export default {
   name: "App",
   components: {
-    //Header
     MedicineList,
+    AddNewMedicine,
   },
   data() {
     return {
-      medicineList: [
-        {
-          id: 100,
-          name: "med1",
-        },
-        {
-          id: 2,
-          name: "med2",
-        },
-        {
-          id: 3,
-          name: "med3",
-        },
-        {
-          id: 4,
-          name: "med4",
-        },
-        {
-          id: 5,
-          name: "med5",
-        },
-        {
-          id: 6,
-          name: "med6",
-        },
-      ],
+      medicineList: [],
+      showNewMed: false,
+      
+
     };
   },
-};
+  methods: {
+    AddNewMed(newMed) {
+      axios.post("https://i338995core.venus.fhict.nl/Medicine/Add/"+ newMed.name + "/"+ newMed.description)
+      .then(res => this.medicineList = [...this.medicineList, res.data])
+      .catch(err => console.log(err))
+    },
+    DeleteMed(obj){
+      axios.delete("https://i338995core.venus.fhict.nl/Medicine/Delete/" + obj.id)
+      // eslint-disable-next-line
+      .then(res => this.medicineList = this.medicineList.filter((medicine)=> medicine.id !== obj.id))
+      .catch(err => console.log(err))
+      
+    },
+    ToggleNMS() {
+      this.showNewMed = !this.showNewMed;
+    },
+    InspectMedicine(obj){
+      console.log("inspect button clicked on: " + obj.id);
+    }
+  },
+  // THIS CODE RUNS WHEN A NEW VUE INSTANCE IS CREATED (AKA WHEN THE TABLE IS CALLED FIRST)
+  created(){
+      axios.get("https://i338995core.venus.fhict.nl/Medicine/GetAll")
+      .then(res=> this.medicineList = res.data)
+      .catch(err=>console.log(err))
+    },
+  };
 </script>
 
 <style>

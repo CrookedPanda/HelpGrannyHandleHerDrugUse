@@ -17,7 +17,6 @@ namespace MaakJeNietDrugAPI.ClassesLogic
         public void Add(Medicine med)
         {
             medicineList.Add(med);
-            int count = medicineList.Count();
         }
 
         public void Delete(int id)
@@ -56,14 +55,7 @@ namespace MaakJeNietDrugAPI.ClassesLogic
                 }
             }
 
-            if(medicine != null)
-            {
-                return medicine;
-            }
-            else
-            {
-                return null;
-            }
+            return medicine;
         }
 
 

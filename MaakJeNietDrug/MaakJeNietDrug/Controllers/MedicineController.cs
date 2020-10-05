@@ -36,7 +36,13 @@ namespace MaakJeNietDrug.Controllers
         [Route("Medicine/Add/{name}/{description}")]
         public void Add(string name, string description)
         {
-            Medicine med = new Medicine(medColl.GetAll().Count(), name, description);
+            Medicine med = new Medicine();
+            foreach(Medicine i in medColl.GetAll())
+            {
+                med = i;
+            }
+
+            med = new Medicine((med.id + 1), name, description);
             medColl.Add(med);
         }
 
