@@ -1,12 +1,15 @@
 <template>
     <div>
     <b-table striped hover :items="medicineList" :fields=fields>
-      <template v-slot:cell(btn)="row">
+      <template v-slot:cell(info)="row">
          <b-button size="sm" @click="info(row.item, $event.target)" class="mr-1">
-          Info modal
+          Inspecteer
         </b-button>
+        
+      </template>
+      <template v-slot:cell(delete)="row">
         <b-button size="sm" @click="showMsgBoxTwo(row.item, $event.target)" class="mr-1">
-          Delete
+          Verwijder
         </b-button>
       </template>
         
@@ -27,10 +30,10 @@ export default {
   data(){
     return{
       fields:[
-        {key: "id", label: "id"},
-        {key: "name", label: "name"},
-        {key: "description", label: "description"},
-        {key: "btn", label: "btn"}
+        {key: "name", label: "Naam"},
+        {key: "description", label: "Beschrijving"},
+        {key: "info", label: "Inspecteer medicijn"},
+        {key: "delete", label: "Verwijder medicijn"}
 
       ]
     }
@@ -44,13 +47,13 @@ export default {
     },
  showMsgBoxTwo: function(obj) {
         this.boxTwo = ''
-        this.$bvModal.msgBoxConfirm('Are you sure you want to delete ' + obj.name + ' from your medicine List?', {
-          title: 'Please Confirm',
+        this.$bvModal.msgBoxConfirm('Weet u zeker dat u: ' + obj.name + ' uit uw medicijnlijst wilt verwijderen?', {
+          title: 'Bevestiging',
           size: 'sm',
           buttonSize: 'sm',
           okVariant: 'danger',
-          okTitle: 'YES',
-          cancelTitle: 'NO',
+          okTitle: 'Ja',
+          cancelTitle: 'Nee',
           footerClass: 'p-2',
           hideHeaderClose: false,
           centered: true

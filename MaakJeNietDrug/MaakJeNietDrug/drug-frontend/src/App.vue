@@ -3,13 +3,13 @@
 
   <div id="app">
     
-        <label  @click="ToggleNMS">Toggle adding screen</label>
+        <label  @click="ToggleNMS">Klik hier om het toevoeg scherm te laten zien / te verbergen</label>
     <AddNewMedicine v-on:add-medicine="AddNewMed" v-if="showNewMed" /> 
 
     <div class="container">
       <div class="card mt-5">
         
-        <h2 class="card-header">Your medicines</h2>
+        <h2 class="card-header">Uw medicijnen</h2>
         <MedicineList v-bind:medicineList="medicineList" v-on:inspect-medicine="InspectMedicine" v-on:del-medicine="DeleteMed"/>
       
       </div>
@@ -27,7 +27,6 @@ import axios from "axios"
 export default {
   name: "App",
   components: {
-    //Header
     MedicineList,
     AddNewMedicine,
   },
