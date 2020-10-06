@@ -1,15 +1,18 @@
 <template>
-    <div>
-    <b-table striped hover :items="medicineList" :fields=fields>
+    <div class="responsive-table">
+      
+      <h2 class="card-header">Uw medicijnen</h2>
+    <b-table fixed responsive="true" striped hover :items="medicineList" :fields=fields>
       <template v-slot:cell(info)="row">
-         <b-button size="sm" @click="info(row.item, $event.target)" class="mr-1">
-          Inspecteer
+         <b-button size="sm" variant="info" @click="info(row.item, $event.target)" class="btn btn-primary">
+           Inspecteer 
         </b-button>
         
       </template>
       <template v-slot:cell(delete)="row">
-        <b-button size="sm" @click="showMsgBoxTwo(row.item, $event.target)" class="mr-1">
-          Verwijder
+
+        <b-button class="btn" variant="danger" size="sm" @click="showMsgBoxTwo(row.item, $event.target)">
+          Verwijder 
         </b-button>
       </template>
         
@@ -20,6 +23,9 @@
 <script>
 
 //import Medicine from "./Medicine";
+import Vue from 'vue';
+import VueResizeText from 'vue-resize-text';
+Vue.use(VueResizeText);
 
 export default {
   name: "MedicineList",
@@ -53,6 +59,7 @@ export default {
           buttonSize: 'sm',
           okVariant: 'danger',
           okTitle: 'Ja',
+          cancelVariant: 'primary',
           cancelTitle: 'Nee',
           footerClass: 'p-2',
           hideHeaderClose: false,

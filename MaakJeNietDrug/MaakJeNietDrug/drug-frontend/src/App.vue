@@ -9,8 +9,8 @@
     <div class="container">
       <div class="card mt-5">
         
-        <h2 class="card-header">Uw medicijnen</h2>
-        <MedicineList v-bind:medicineList="medicineList" v-on:inspect-medicine="InspectMedicine" v-on:del-medicine="DeleteMed"/>
+        
+        <MedicineList  v-bind:medicineList="medicineList" v-on:inspect-medicine="InspectMedicine" v-on:del-medicine="DeleteMed"/>
       
       </div>
     </div>
@@ -23,6 +23,9 @@
 import MedicineList from "./components/MedicineList";
 import AddNewMedicine from "./components/AddNewMedicine";
 import axios from "axios"
+import Vue from 'vue';
+import VueResizeText from 'vue-resize-text';
+Vue.use(VueResizeText);
 
 export default {
   name: "App",
