@@ -10,8 +10,6 @@
       id="voeg-medicijn-toe-modal"
       ref="modal"
       title="Voeg een medicijn toe"
-      @show="resetModal"
-      @hidden="resetModal"
       ok-title="toevoegen"
       @ok="addMedicine"
       cancel-title="annuleren"
@@ -72,15 +70,34 @@ export default {
     };
   },
   methods: {
-    addMedicine() {
+    submit() {
+      console.log('submit!')
+      this.$v.$touch()
+      if (this.$v.$invalid) {
+        this.submitStatus = 'ERROR'
+      } else {
+        // do your submit logic here
+        this.submitStatus = 'PENDING'
+        setTimeout(() => {
+          this.submitStatus = 'OK'
+        }, 500)
+      }
+    },
+    addMedicine(e) {
       //e.preventDefault();
       const newMed = {
         name: this.name,
         description: this.description,
       };
-      this.$emit("add-medicine", newMed);
-      this.name = "";
-      this.description = "";
+
+
+      this.$v.$touch()
+      if (this.$v.$invalid) {
+        e.preventDefault();
+        alert("Vul de juiste waarden in voor het nieuwe medicijn!")
+      } else {
+              this.$emit("add-medicine", newMed);
+      }
     },
 
     ToggleNMS() {

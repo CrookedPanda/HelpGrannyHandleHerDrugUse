@@ -5,9 +5,9 @@
     <b-table fixed responsive="true" striped hover :items="medicineList" :fields=fields>
       <template v-slot:cell(info)="row">
          <b-button size="sm" variant="info" @click="info(row.item, $event.target)" class="btn btn-primary">
-           Inspecteer 
+           Inspect
+           
         </b-button>
-        
       </template>
       <template v-slot:cell(delete)="row">
 
@@ -22,7 +22,7 @@
 
 <script>
 
-//import Medicine from "./Medicine";
+import Medicine from "./Medicine";
 import Vue from 'vue';
 import VueResizeText from 'vue-resize-text';
 Vue.use(VueResizeText);
@@ -31,7 +31,7 @@ export default {
   name: "MedicineList",
   props: ["medicineList"],
   components: {
-    //Medicine,
+    Medicine,
   },
   data(){
     return{
