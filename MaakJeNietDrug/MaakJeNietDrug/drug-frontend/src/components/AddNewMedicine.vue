@@ -1,32 +1,65 @@
+
+
 <template>
   <div>
-    <b-form inline @submit="addMedicine" class="b-form" align-h="center">
-      
-      <label class="sr-only" for="inline-form-input-title">Naam</label>
-      <b-input
-      
-        id="inline-form-input-id"
-        class="ml-auto mr-sm-2"
-        placeholder="Uw titel"
-        v-model="name"
-      ></b-input>
-      <label class="sr-only" for="inline-form-input-id">Beschrijving</label>
-      <b-textarea
-      id="inline-form-input-description"
-        class="mr-2 w-25"
-        placeholder="Uw beschrijving"
-        v-model="description"
-      
-      ></b-textarea>
-      
+    <b-button variant="outline-primary" v-b-modal.voeg-medicijn-toe-modal>
+      Klik hier om nieuw medicijn toe te voegen!
+    </b-button>
 
-      <b-button type="submit" variant="primary" class="mr-auto">Toevoegen</b-button>
-    </b-form>
+    <b-modal
+      id="voeg-medicijn-toe-modal"
+      ref="modal"
+      title="Voeg een medicijn toe"
+      @show="resetModal"
+      @hidden="resetModal"
+      ok-title="toevoegen"
+      @ok="addMedicine"
+      cancel-title="annuleren"
+    >
+      <form ref="form" @submit="addMedicine">
+        <b-form-group
+          label="naam"
+          label-for="name-input"
+          :class="{ 'form-group--error': $v.name.$error }"
+        >
+          <b-form-input
+            id="name-input"
+            v-model.trim="name"
+            required
+          ></b-form-input>
+          <div class="error" v-if="!$v.name.required">Naam is verplicht!</div>
+          <div class="error" v-if="!$v.name.minLength">
+            De naam van het medicijn moet minimaal {{ $v.name.$params.minLength.min }} karakters zijn!.
+          </div>
+        </b-form-group>
+        <b-form-group
+          label="omschrijving"
+          label-for="description-input"
+           :class="{ 'form-group--error': $v.description.$error }"
+        >
+          <b-form-input
+            id="description-input"
+            v-model="description"
+            required
+          ></b-form-input>
+          <div class="error" v-if="!$v.description.required">Beschrijving is verplicht!</div>
+          <div class="error" v-if="!$v.description.maxLength">
+            De beschrijving mag uit maximaal {{ $v.description.$params.maxLength.max }} karakters bestaan!
+          </div>
+          
+        </b-form-group>
+      </form>
+    </b-modal>
   </div>
 </template>
 
 
 <script>
+import Vue from "vue";
+import Vuelidate from "vuelidate";
+import { required, minLength, maxLength } from "vuelidate/lib/validators";
+Vue.use(Vuelidate);
+
 export default {
   name: "AddNewMedicine",
   data() {
@@ -34,20 +67,38 @@ export default {
       id: 10,
       name: "",
       description: "",
+
+      showNewMed: false,
     };
   },
   methods: {
     addMedicine() {
       //e.preventDefault();
       const newMed = {
-        id: this.id,
         name: this.name,
         description: this.description,
       };
       this.$emit("add-medicine", newMed);
-      this.id = 10;
       this.name = "";
       this.description = "";
+    },
+
+    ToggleNMS() {
+      this.showNewMed = !this.showNewMed;
+    },
+    ResetModal() {
+      this.name = "";
+      this.description = "";
+    },
+  },
+  validations: {
+    name: {
+      required,
+      minLength: minLength(4),
+    },
+    description: {
+      required,
+      maxLength: maxLength(140),
     },
   },
 };

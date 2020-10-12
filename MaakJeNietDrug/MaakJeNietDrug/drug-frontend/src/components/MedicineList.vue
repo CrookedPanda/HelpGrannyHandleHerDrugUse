@@ -51,7 +51,7 @@ export default {
     deleteMed: function(obj){
       this.$emit("del-medicine", obj);
     },
- showMsgBoxTwo: function(obj) {
+    showMsgBoxTwo: function(obj) {
         this.boxTwo = ''
         this.$bvModal.msgBoxConfirm('Weet u zeker dat u: ' + obj.name + ' uit uw medicijnlijst wilt verwijderen?', {
           title: 'Bevestiging',
