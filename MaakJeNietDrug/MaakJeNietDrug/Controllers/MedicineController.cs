@@ -33,7 +33,6 @@ namespace MaakJeNietDrug.Controllers
             {
                 med = i;
             }
-
             med = new Medicine(med.id + 1, name, description);
             medColl.Add(med);
         }

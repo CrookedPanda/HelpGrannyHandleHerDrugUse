@@ -17,7 +17,6 @@ namespace MaakJeNietDrugAPI.ClassesLogic
         public void Add(Medicine med)
         {
             medicineList.Add(med);
-            int count = medicineList.Count();
         }
 
         public void Delete(int id)
