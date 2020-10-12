@@ -2,9 +2,9 @@
 <div>
     
       <btd >
-      {{ medicine.id }}
-      </btd><btd >
       {{ medicine.name }}
+      </btd><btd >
+      {{ medicine.description }}
       </btd>
 
 </div>
