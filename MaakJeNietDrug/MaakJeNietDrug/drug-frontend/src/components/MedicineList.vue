@@ -22,7 +22,7 @@
 
 <script>
 
-import Medicine from "./Medicine";
+//import Medicine from "./Medicine";
 import Vue from 'vue';
 import VueResizeText from 'vue-resize-text';
 Vue.use(VueResizeText);
@@ -31,7 +31,7 @@ export default {
   name: "MedicineList",
   props: ["medicineList"],
   components: {
-    Medicine,
+   //Medicine,
   },
   data(){
     return{
