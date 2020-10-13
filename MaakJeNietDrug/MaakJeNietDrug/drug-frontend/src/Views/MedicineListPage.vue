@@ -61,7 +61,8 @@ export default {
         .catch((err) => console.log(err));
     },
     InspectMedicine(obj) {
-      console.log("inspect button clicked on: " + obj.id);
+      
+      this.$router.push({ name: 'MedicineDetail', params: { id:obj.id} })
     },
   },
   // THIS CODE RUNS WHEN A NEW VUE INSTANCE IS CREATED (AKA WHEN THE TABLE IS CALLED FIRST)
