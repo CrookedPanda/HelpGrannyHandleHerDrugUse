@@ -2,7 +2,7 @@
   <div id="app">
     
     <AddNewMedicine v-on:add-medicine="AddNewMed"  />
-    <div class="container">
+    <div class="container mt-5" >
       <div class="card mt-5">
         <MedicineList
           v-bind:medicineList="medicineList"

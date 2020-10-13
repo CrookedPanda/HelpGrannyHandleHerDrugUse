@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <b-button variant="outline-primary" v-b-modal.voeg-medicijn-toe-modal>
+    <b-button variant="outline-primary" v-b-modal.voeg-medicijn-toe-modal class="ml-2 mr-2">
       Klik hier om nieuw medicijn toe te voegen!
     </b-button>
 
