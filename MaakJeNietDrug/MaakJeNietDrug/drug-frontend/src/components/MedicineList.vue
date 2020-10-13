@@ -5,9 +5,9 @@
     <b-table fixed responsive="true" striped hover :items="medicineList" :fields=fields>
       <template v-slot:cell(info)="row">
          <b-button size="sm" variant="info" @click="info(row.item, $event.target)" class="btn btn-primary">
-           Inspecteer 
+           Inspect
+           
         </b-button>
-        
       </template>
       <template v-slot:cell(delete)="row">
 
@@ -31,7 +31,7 @@ export default {
   name: "MedicineList",
   props: ["medicineList"],
   components: {
-    //Medicine,
+   //Medicine,
   },
   data(){
     return{
@@ -51,7 +51,7 @@ export default {
     deleteMed: function(obj){
       this.$emit("del-medicine", obj);
     },
- showMsgBoxTwo: function(obj) {
+    showMsgBoxTwo: function(obj) {
         this.boxTwo = ''
         this.$bvModal.msgBoxConfirm('Weet u zeker dat u: ' + obj.name + ' uit uw medicijnlijst wilt verwijderen?', {
           title: 'Bevestiging',

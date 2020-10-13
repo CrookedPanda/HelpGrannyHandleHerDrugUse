@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MaakJeNietDrugAPI.ClassesLogic;
+using MaakJeNietDrugLogic.ClassesLogic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,19 +12,10 @@ namespace MaakJeNietDrug.Controllers
     {
         static MedicineCollection medColl = new MedicineCollection();
 
-        [Route("Medicine/Get/{medId?}")]
-        public Medicine Get(int? medId)
+        [Route("Medicine/Get/{id}")]
+        public Medicine Get(int id)
         {
-            if (medId != null)
-            {
-                int id = Convert.ToInt32(medId);
-                return medColl.Get(id);
-            }
-            else
-            {
-                return null;
-            }
-
+           return medColl.Get(id);
         }
 
         [Route("Medicine/GetAll")]
@@ -37,14 +28,15 @@ namespace MaakJeNietDrug.Controllers
         public void Add(string name, string description)
         {
             Medicine med = new Medicine();
+
             foreach(Medicine i in medColl.GetAll())
             {
                 med = i;
             }
-
-            med = new Medicine((med.id + 1), name, description);
+            med = new Medicine(med.id + 1, name, description);
             medColl.Add(med);
         }
+
 
         [Route("Medicine/Delete/{id}")]
         public void Add(int id)
