@@ -4,44 +4,44 @@
       <b-form-group
         id="input-group-1"
         label="Gebruikersnaam:"
-        label-for="input-gebruikersnaam"
+        label-for="input-reg-gebruikersnaam"
         description="Voer hier een gebruikersnaam in"
         style="margin-left:25%; margin-right:25%"
       >
         <b-form-input
-          id="input-gebruikersnaam"
+          id="input-reg-gebruikersnaam"
           v-model="account.gebruikersnaam"
           type="text"
           required
-          placeholder="PoppendePater72"
+          placeholder="Grootvader078"
         >
         </b-form-input>
       </b-form-group>
       <b-form-group
         id="input-group-2"
         label="E-mail:"
-        label-for="input-email"
+        label-for="input-reg-email"
         description="Voer hier uw Email in"
         style="margin-left:25%; margin-right:25%"
       >
         <b-form-input
-          id="input-email"
+          id="input-reg-email"
           v-model="account.email"
           type="email"
           required
-          placeholder="PaterNooitGenoeg@christerlijkgedoe.com"
+          placeholder="Poppey@eye.com"
         >
         </b-form-input>
       </b-form-group>
       <b-form-group
         id="input-group-3"
         label="Wachtwoord:"
-        label-for="input-wachtwoord"
+        label-for="input-reg-wachtwoord"
         description="Voer hier uw wachtwoord in"
         style="margin-left:25%; margin-right:25%"
       >
         <b-form-input
-          id="input-wachtwoord"
+          id="input-reg-wachtwoord"
           v-model="account.wachtwoord"
           type="password"
           required
@@ -52,12 +52,12 @@
             <b-form-group
         id="input-group-4"
         label="Herhaal wachtwoord:"
-        label-for="input-wachtwoord2"
+        label-for="input-reg-wachtwoord2"
         description="Voer hier uw wachtwoord nogmaals in"
         style="margin-left:25%; margin-right:25%"
       >
         <b-form-input
-          id="input-wachtwoord"
+          id="input-reg-wachtwoord2"
           v-model="account.wachtwoord2"
           type="password"
           required

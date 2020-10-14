@@ -7,15 +7,15 @@
         <b-form-group
         id="input-group-1"
         label="Gebruikersnaam:"
-        label-for="input-gebruikersnaam"
+        label-for="input-log-gebruikersnaam"
         description="Voer hier uw gebruikersnaam in"
         class="ml-5 mr-5">
         <b-form-input
-        id="input-gebruikersnaam"
+        id="input-log-gebruikersnaam"
         v-model="account.gebruikersnaam"
         type="text"
         required
-        placeholder="PoppendePater72"
+        placeholder="MoederNatuur123"
         >
         </b-form-input>
         
@@ -23,11 +23,11 @@
         <b-form-group
         id="input-group-2"
         label="Wachtwoord:"
-        label-for="input-wachtwoord"
+        label-for="input-log-wachtwoord"
         description="Voer hier uw wachtwoord in"
         class="ml-5 mr-5">
         <b-form-input
-        id="input-wachtwoord"
+        id="input-log-wachtwoord"
         v-model="account.wachtwoord"
         type="password"
         required
