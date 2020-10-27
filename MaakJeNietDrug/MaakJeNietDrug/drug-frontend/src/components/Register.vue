@@ -82,7 +82,7 @@
       <b-list-group-item variant="danger" v-if="!$v.wachtwoord.maxLength">Wachtwoord mag maximaal {{$v.wachtwoord.$params.maxLength.max}} karakters zijn!</b-list-group-item>
       <b-list-group-item variant="danger" v-if="!$v.wachtwoord2.sameAswachtwoord">Wachtwoorden komen niet overeen!</b-list-group-item>
       <b-list-group-item variant="info" v-if="$v.$invalid"> <kbd>Ongeldige invoer</kbd></b-list-group-item>
-      <b-list-group-item variant="success" v-else>All fine.</b-list-group-item>
+      <b-list-group-item variant="success" v-if="!$v.$invalid"> <kbd>Geldige invoer</kbd></b-list-group-item>
     </b-list-group>
         
     </b-form>

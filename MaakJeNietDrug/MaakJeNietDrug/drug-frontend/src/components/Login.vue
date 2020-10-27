@@ -38,19 +38,18 @@
       </b-form-group>
       <b-button type="submit" variant="primary" class="mr-2">Login</b-button>
       <b-button type="reset" variant="danger" class="ml-2">Reset</b-button>
-      <div class="form-group mt-5">
-    <label class="form__label">Validation status:</label>
-    <ul class="list__ul">
-      <li v-if="!$v.gebruikersnaam.required"> Gebruikersnaam is verplicht! </li>
-      <li v-if="!$v.gebruikersnaam.minLength">Gebruikersnaam moet minimaal {{$v.gebruikersnaam.$params.minLength.min}} karakters zijn!</li>
-      <li v-if="!$v.gebruikersnaam.maxLength">Gebruikersnaam mag maximaal {{$v.gebruikersnaam.$params.maxLength.max}} karakters zijn!</li>
-      <li v-if="!$v.wachtwoord.required">Wachtwoord is verplicht!</li>
-      <li v-if="!$v.wachtwoord.minLength">Wachtwoord moet minimaal {{$v.wachtwoord.$params.minLength.min}} karakters zijn!</li>
-      <li v-if="!$v.wachtwoord.maxLength">Wachtwoord mag maximaal {{$v.wachtwoord.$params.maxLength.max}} karakters zijn!</li>
-      <li v-if="$v.$invalid"> <kbd>Ongeldige invoer</kbd></li>
-      <li v-else>All fine.</li>
-    </ul>
-  </div>
+
+      <b-list-group class="mt-5">
+      <b-list-group-item variant="danger" v-if="!$v.gebruikersnaam.required"> Gebruikersnaam is verplicht! </b-list-group-item>
+      <b-list-group-item variant="danger" v-if="!$v.gebruikersnaam.minLength">Gebruikersnaam moet minimaal {{$v.gebruikersnaam.$params.minLength.min}} karakters zijn!</b-list-group-item>
+      <b-list-group-item variant="danger" v-if="!$v.gebruikersnaam.maxLength">Gebruikersnaam mag maximaal {{$v.gebruikersnaam.$params.maxLength.max}} karakters zijn!</b-list-group-item>
+      <b-list-group-item variant="danger" v-if="!$v.wachtwoord.required">Wachtwoord is verplicht!</b-list-group-item>
+      <b-list-group-item variant="danger" v-if="!$v.wachtwoord.minLength">Wachtwoord moet minimaal {{$v.wachtwoord.$params.minLength.min}} karakters zijn!</b-list-group-item>
+      <b-list-group-item variant="danger" v-if="!$v.wachtwoord.maxLength">Wachtwoord mag maximaal {{$v.wachtwoord.$params.maxLength.max}} karakters zijn!</b-list-group-item>
+      <b-list-group-item variant="info" v-if="$v.$invalid"> <kbd>Ongeldige invoer</kbd></b-list-group-item>
+      <b-list-group-item variant="success" v-if="!$v.$invalid"> <kbd>Geldige invoer</kbd></b-list-group-item>
+    </b-list-group>
+
     </b-form>
   </div>
 </template>
