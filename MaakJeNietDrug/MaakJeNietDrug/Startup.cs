@@ -2,10 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MaakJeNietDrugDAL.ClassesDB;
+using MaakJeNietDrugLogic.Handlers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,6 +29,17 @@ namespace MaakJeNietDrug
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            // todo: uncomment to use MySQL
+            //services.AddDbContextPool<DataBaseContext>(
+            //    options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")
+            //));
+
+            DataBaseSeeder.SeedMedine();
+
+            services.AddScoped<IGetMedicinesHandler, GetMedicinesHandler>();
+            services.AddScoped<IAddMedicineHandler, AddMedicineHandler>();
+
             services.AddSpaStaticFiles(options => options.RootPath = "drug-frontend/dist");
         }
 
@@ -49,16 +63,16 @@ namespace MaakJeNietDrug
             });
 
             // add following statements
-            app.UseSpaStaticFiles();
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "drug-frontend";
-                if (env.IsDevelopment())
-                {
-                    // Launch development server for Vue.js
-                    spa.UseVueDevelopmentServer();
-                }
-            });
+            //app.UseSpaStaticFiles();
+            //app.UseSpa(spa =>
+            //{
+            //    spa.Options.SourcePath = "drug-frontend";
+            //    if (env.IsDevelopment())
+            //    {
+            //        // Launch development server for Vue.js
+            //        spa.UseVueDevelopmentServer();
+            //    }
+            //});
         }
     }
 }

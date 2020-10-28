@@ -12,9 +12,37 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="drug-frontend\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="drug-frontend\**" />
+    <EmbeddedResource Remove="drug-frontend\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="drug-frontend\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="drug-frontend\.gitignore" />
+    <None Remove="drug-frontend\babel.config.js" />
+    <None Remove="drug-frontend\package-lock.json" />
+    <None Remove="drug-frontend\package.json" />
+    <None Remove="drug-frontend\public\favicon.ico" />
+    <None Remove="drug-frontend\public\index.html" />
+    <None Remove="drug-frontend\README.md" />
+    <None Remove="drug-frontend\src\App.vue" />
+    <None Remove="drug-frontend\src\assets\logo.png" />
+    <None Remove="drug-frontend\src\components\AddNewMedicine.vue" />
+    <None Remove="drug-frontend\src\components\layout\Header.vue" />
+    <None Remove="drug-frontend\src\components\Login.vue" />
+    <None Remove="drug-frontend\src\components\Medicine.vue" />
+    <None Remove="drug-frontend\src\components\MedicineList.vue" />
+    <None Remove="drug-frontend\src\components\Register.vue" />
+    <None Remove="drug-frontend\src\main.js" />
+    <None Remove="drug-frontend\src\router.js" />
+    <None Remove="drug-frontend\src\Views\AccountPage.vue" />
+    <None Remove="drug-frontend\src\Views\Home.vue" />
+    <None Remove="drug-frontend\src\Views\MedicineListPage.vue" />
+    <None Remove="drug-frontend\src\Views\MedicinePage.vue" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +53,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MaakJeNietDrugDAL\MaakJeNietDrugDAL.csproj" />
     <ProjectReference Include="..\MaakJeNietDrugLogic\MaakJeNietDrugLogic.csproj" />
   </ItemGroup>
 

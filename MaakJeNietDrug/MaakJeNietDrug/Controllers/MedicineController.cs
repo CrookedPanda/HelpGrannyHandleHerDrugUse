@@ -1,48 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MaakJeNietDrugLogic.ClassesLogic;
-using Microsoft.AspNetCore.Http;
+﻿using MaakJeNietDrugLogic.ClassesLogic;
+using MaakJeNietDrugLogic.Handlers;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace MaakJeNietDrug.Controllers
 {
     public class MedicineController : ControllerBase
     {
-        static MedicineCollection medColl = new MedicineCollection();
+        private readonly IGetMedicinesHandler _getHandler;
+        private readonly IAddMedicineHandler _addHandler;
 
-        [Route("Medicine/Get/{id}")]
-        public Medicine Get(int id)
+        public MedicineController(IGetMedicinesHandler getHandler, IAddMedicineHandler addHandler)
         {
-           return medColl.Get(id);
+            _getHandler = getHandler;
+            _addHandler = addHandler;
         }
 
-        [Route("Medicine/GetAll")]
-        public List<Medicine> GetAll()
+        [HttpGet]
+        [Route("medicine")]
+        public IEnumerable<Medicine> GetAll()
         {
-            return medColl.GetAll();
+            return _getHandler.GetMedicine();
         }
 
-        [Route("Medicine/Add/{name}/{description}")]
-        public void Add(string name, string description)
+        [HttpPost]
+        [Route("medicine")]
+        public void Add([FromBody] Medicine med)
         {
-            Medicine med = new Medicine();
-
-            foreach(Medicine i in medColl.GetAll())
-            {
-                med = i;
-            }
-            med = new Medicine(med.id + 1, name, description);
-            medColl.Add(med);
+            _addHandler.Add(med);
         }
 
+        //[HttpGet]
+        //[Route("medicine/{id}")]
+        //public Medicine Get(int id)
+        //{
+        //    //return medColl.GetMedine(id);
+        //}
 
-        [Route("Medicine/Delete/{id}")]
-        public void Add(int id)
-        {
-            medColl.Delete(id);
-        }
-
+        //[HttpDelete]
+        //[Route("medicine/{id}")]
+        //public void Add(int id)
+        //{
+        //    medColl.Delete(id);
+        //}
     }
 }
