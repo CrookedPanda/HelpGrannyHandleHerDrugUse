@@ -1,7 +1,7 @@
 ﻿using MaakJeNietDrugDAL.ClassesDB;
 using MaakJeNietDrugLogic.ClassesLogic;
 
-namespace MaakJeNietDrugLogic.Handlers
+namespace MaakJeNietDrugLogic.Handlers.MedicineHandlers
 {
     public class AddMedicineHandler : IAddMedicineHandler
     {

@@ -1,6 +1,6 @@
 ﻿using MaakJeNietDrugLogic.ClassesLogic;
 
-namespace MaakJeNietDrugLogic.Handlers
+namespace MaakJeNietDrugLogic.Handlers.MedicineHandlers
 {
     public interface IAddMedicineHandler
     {
