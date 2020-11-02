@@ -2,7 +2,7 @@
   <header class="header">
     <h1>Maak je niet drug</h1>
     <div id="nav">
-      <b-navbar toggleable="lg" type="dark" variant="secondary">
+      <b-navbar toggleable="lg" type="info" variant="secondary">
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
