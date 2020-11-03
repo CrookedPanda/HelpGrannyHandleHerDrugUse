@@ -39,7 +39,7 @@ export default {
     CreateAccount(obj) {
       axios({
   method: 'post',
-  url: 'https://i338995core.venus.fhict.nl/account',
+  url: 'https://localhost:44394/account',
   //https://i338995core.venus.fhict.nl/account
   data: {
     name: obj.gebruikersnaam,
@@ -49,7 +49,7 @@ export default {
       }
       );
     },
-    Inloggen(obj){
+    inloggen(obj){
       console.log(obj)
     },
   },
