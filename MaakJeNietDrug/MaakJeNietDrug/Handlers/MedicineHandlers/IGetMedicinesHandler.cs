@@ -1,10 +1,10 @@
 ﻿using MaakJeNietDrugLogic.ClassesLogic;
 using System.Collections.Generic;
 
-namespace MaakJeNietDrugLogic.Handlers
+namespace MaakJeNietDrugLogic.Handlers.MedicineHandlers
 {
     public interface IGetMedicinesHandler
     {
-        IEnumerable<Medicine> GetMedicine();
+        IEnumerable<Medicine> Get();
     }
 }

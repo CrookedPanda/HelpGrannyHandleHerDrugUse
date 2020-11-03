@@ -3,11 +3,12 @@ using MaakJeNietDrugLogic.ClassesLogic;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MaakJeNietDrugLogic.Handlers
+namespace MaakJeNietDrugLogic.Handlers.MedicineHandlers
+
 {
     public class GetMedicinesHandler : IGetMedicinesHandler
     {
-        public IEnumerable<Medicine> GetMedicine()
+        public IEnumerable<Medicine> Get()
         {
             using var context = new DataBaseContext();
 

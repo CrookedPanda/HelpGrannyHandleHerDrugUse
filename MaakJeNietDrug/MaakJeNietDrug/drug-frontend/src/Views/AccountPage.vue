@@ -19,7 +19,7 @@
 <script>
 import Login from "../components/Login";
 import Register from "../components/Register";
-//import axios from "axios";
+import axios from "axios";
 import Vue from "vue";
 import VueResizeText from "vue-resize-text";
 Vue.use(VueResizeText);
@@ -37,7 +37,17 @@ export default {
   },
   methods: {
     CreateAccount(obj) {
-      return obj;
+      axios({
+  method: 'post',
+  url: 'https://i338995core.venus.fhict.nl/account',
+  //https://i338995core.venus.fhict.nl/account
+  data: {
+    name: obj.gebruikersnaam,
+        password : obj.wachtwoord,
+        email : obj.email,
+      }
+      }
+      );
     },
     Inloggen(obj){
       console.log(obj)

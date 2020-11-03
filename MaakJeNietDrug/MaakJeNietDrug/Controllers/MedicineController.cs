@@ -1,5 +1,6 @@
 ﻿using MaakJeNietDrugLogic.ClassesLogic;
 using MaakJeNietDrugLogic.Handlers;
+using MaakJeNietDrugLogic.Handlers.MedicineHandlers;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -20,7 +21,7 @@ namespace MaakJeNietDrug.Controllers
         [Route("medicine")]
         public IEnumerable<Medicine> GetAll()
         {
-            return _getHandler.GetMedicine();
+            return _getHandler.Get();
         }
 
         [HttpPost]
