@@ -12,7 +12,9 @@
               Medicine List</b-nav-item>
               <b-nav-item to="/account"  v-resize-text>
               Account</b-nav-item>
-            
+          </b-navbar-nav>
+          <b-navbar-nav class="ml-auto">
+            <b-button size="sm" class="my-2 my-sm-0" type="submit">Uitloggen</b-button>
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
