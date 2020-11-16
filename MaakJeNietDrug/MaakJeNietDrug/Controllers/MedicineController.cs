@@ -29,6 +29,13 @@ namespace MaakJeNietDrug.Controllers
             return _getHandler.Get();
         }
 
+        [HttpGet]
+        [Route("medicine/{id}")]
+        public Medicine Get(int id)
+        {
+            return _getHandler.Get(id);
+        }
+
         [HttpPost]
         [Route("medicine")]
         public void Add([FromBody] Medicine med)

@@ -6,5 +6,6 @@ namespace MaakJeNietDrugLogic.Handlers.MedicineHandlers
     public interface IGetMedicinesHandler
     {
         IEnumerable<Medicine> Get();
+        Medicine Get(int id);
     }
 }

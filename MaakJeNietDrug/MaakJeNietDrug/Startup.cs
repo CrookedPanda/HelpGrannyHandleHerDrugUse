@@ -70,17 +70,7 @@ namespace MaakJeNietDrug
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
-            app.UseSpaStaticFiles();
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "drug-frontend";
-                if (env.IsDevelopment())
-                {
-                    // Launch development server for Vue.js
-                    spa.UseVueDevelopmentServer();
-                }
-            });
+            });           
         }
     }
 }
