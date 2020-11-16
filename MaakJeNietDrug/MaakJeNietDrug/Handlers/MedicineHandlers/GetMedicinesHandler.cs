@@ -14,5 +14,11 @@ namespace MaakJeNietDrugLogic.Handlers.MedicineHandlers
 
             return context.Medicines.ToList();
         }
+        public Medicine Get(int id)
+        {
+            using var context = new DataBaseContext();
+
+            return context.Medicines.Find(id);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MaakJeNietDrugLogic.ClassesLogic;
+﻿using MaakJeNietDrugAPI.Handlers.AccountHandlers;
+using MaakJeNietDrugLogic.ClassesLogic;
 using MaakJeNietDrugLogic.Handlers;
 using MaakJeNietDrugLogic.Handlers.MedicineHandlers;
 using Microsoft.AspNetCore.Mvc;
@@ -10,11 +11,15 @@ namespace MaakJeNietDrug.Controllers
     {
         private readonly IGetMedicinesHandler _getHandler;
         private readonly IAddMedicineHandler _addHandler;
+        private readonly IDeleteMedicineHandler _deleteHandler;
+        private readonly IPutMedicineHandler _putHandler;
 
-        public MedicineController(IGetMedicinesHandler getHandler, IAddMedicineHandler addHandler)
+        public MedicineController(IGetMedicinesHandler getHandler, IAddMedicineHandler addHandler, IDeleteMedicineHandler deleteHandler, IPutMedicineHandler putHandler)
         {
             _getHandler = getHandler;
             _addHandler = addHandler;
+            _deleteHandler = deleteHandler;
+            _putHandler = putHandler;
         }
 
         [HttpGet]
@@ -31,18 +36,18 @@ namespace MaakJeNietDrug.Controllers
             _addHandler.Add(med);
         }
 
-        //[HttpGet]
-        //[Route("medicine/{id}")]
-        //public Medicine Get(int id)
-        //{
-        //    //return medColl.GetMedine(id);
-        //}
+        [HttpDelete]
+        [Route("medicine")]
+        public void Delete([FromBody] Medicine med)
+        {
+            _deleteHandler.Delete(med);
+        }
 
-        //[HttpDelete]
-        //[Route("medicine/{id}")]
-        //public void Add(int id)
-        //{
-        //    medColl.Delete(id);
-        //}
+        [HttpPut]
+        [Route("medicine")]
+        public void Put([FromBody] Medicine med)
+        {
+            _putHandler.Put(med);
+        }
     }
 }
