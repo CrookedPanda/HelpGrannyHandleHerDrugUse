@@ -17,6 +17,7 @@ using Microsoft.Extensions.Logging;
 using MaakJeNietDrugLogic;
 using MaakJeNietDrugAPI.Handlers.AccountHandlers;
 using Microsoft.EntityFrameworkCore.Design;
+using MaakJeNietDrugLogic.Handlers.IntakeMomentHandlers;
 
 namespace MaakJeNietDrug
 {
@@ -49,6 +50,11 @@ namespace MaakJeNietDrug
             services.AddScoped<IAddAccountHandler, AddAccountHandler>();
             services.AddScoped<IDeleteAccountHandler, DeleteAccountHandler>();
             services.AddScoped<IPutAccountHandler, PutAccountHandler>();
+
+            services.AddScoped<IGetIntakeMomentHandler, GetIntakeMomentHandler>();
+            services.AddScoped<IAddIntakeMomentHandler, AddIntakeMomentHandler>();
+            services.AddScoped<IDeleteIntakeMomentHandler, DeleteIntakeMomentHandler>();
+            services.AddScoped<IPutIntakeMomentHandler, PutIntakeMomentHandler>();
             services.AddSpaStaticFiles(options => options.RootPath = "drug-frontend/dist");
 
         }

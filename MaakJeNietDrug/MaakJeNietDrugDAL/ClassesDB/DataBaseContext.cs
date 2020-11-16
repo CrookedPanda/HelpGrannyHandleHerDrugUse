@@ -1,4 +1,5 @@
 ﻿using MaakJeNietDrugLogic.ClassesLogic;
+using MaakJeNietDrugLogic.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace MaakJeNietDrugDAL.ClassesDB
@@ -8,10 +9,12 @@ namespace MaakJeNietDrugDAL.ClassesDB
         public DbSet<Medicine> Medicines { get; set; }
         public DbSet<Account> Accounts { get; set; }
 
+        public DbSet<IntakeMoment> IntakeMoments { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql(
-            "Server=mysql.beekmans.dev;Database=maakjenietdrug;Uid=maakjenietdrug;Pwd=Pwd4maakjenietdrug;",
+            optionsBuilder.UseSqlServer(
+            "Server=(localdb)\\mssqllocaldb;Database=MaakJeNietDrug;Trusted_Connection=True;MultipleActiveResultSets=true",
             options => options.EnableRetryOnFailure());
         }
     }

@@ -1,8 +1,11 @@
 ﻿using MaakJeNietDrugAPI.Handlers.AccountHandlers;
+using MaakJeNietDrugAPI.Model;
 using MaakJeNietDrugLogic.ClassesLogic;
 using MaakJeNietDrugLogic.Handlers;
 using MaakJeNietDrugLogic.Handlers.MedicineHandlers;
+using MaakJeNietDrugLogic.Model;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace MaakJeNietDrug.Controllers
@@ -56,5 +59,6 @@ namespace MaakJeNietDrug.Controllers
         {
             _putHandler.Put(med);
         }
+
     }
 }
