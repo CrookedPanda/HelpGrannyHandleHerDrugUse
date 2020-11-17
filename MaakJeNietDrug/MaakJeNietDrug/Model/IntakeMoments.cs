@@ -9,6 +9,7 @@ namespace MaakJeNietDrugAPI.Model
     {
         public int Id { get; set; }
         public int Frequency { get; set; }
+        public int Dosering { get; set; }
         public List<DateTime> Dates { get; set; }
     }
 }

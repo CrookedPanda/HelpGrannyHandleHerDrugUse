@@ -65,18 +65,32 @@ namespace MaakJeNietDrugDAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("_Date")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("_Frequency")
+                    b.Property<int>("Dosering")
                         .HasColumnType("int");
 
-                    b.Property<int>("_MedicineId")
+                    b.Property<int>("Frequency")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MedicineId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("MedicineId");
+
                     b.ToTable("IntakeMoments");
+                });
+
+            modelBuilder.Entity("MaakJeNietDrugLogic.Model.IntakeMoment", b =>
+                {
+                    b.HasOne("MaakJeNietDrugLogic.ClassesLogic.Medicine", null)
+                        .WithMany("intakeMoments")
+                        .HasForeignKey("MedicineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

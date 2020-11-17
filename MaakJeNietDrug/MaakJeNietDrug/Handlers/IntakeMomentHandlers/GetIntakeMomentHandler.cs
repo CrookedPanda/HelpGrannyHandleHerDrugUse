@@ -28,7 +28,7 @@ namespace MaakJeNietDrugLogic.Handlers.IntakeMomentHandlers
             List<IntakeMoment> moments = new List<IntakeMoment>();
             foreach(IntakeMoment moment in context.IntakeMoments.ToList())
             {
-                if(moment._MedicineId == id)
+                if(moment.MedicineId == id)
                 {
                     moments.Add(moment);
                 }

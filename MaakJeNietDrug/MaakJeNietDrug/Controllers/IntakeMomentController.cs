@@ -50,10 +50,11 @@ namespace MaakJeNietDrug.Controllers
         [Route("IntakeMoment")]
         public void Add([FromBody] IntakeMoments moments)
         {
+
             List<IntakeMoment> intakeMoments = new List<IntakeMoment>();
             foreach(DateTime moment in moments.Dates)
             {
-                intakeMoments.Add(new IntakeMoment(moment, moments.Frequency,  moments.Id));
+                intakeMoments.Add(new IntakeMoment(moment, moments.Frequency, moments.Dosering, new Medicine(moments.Id)));
             }
             _addHandler.Add(intakeMoments);
         }
