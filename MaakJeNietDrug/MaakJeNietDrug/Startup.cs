@@ -1,22 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using MaakJeNietDrugDAL.ClassesDB;
 using MaakJeNietDrugLogic.Handlers.MedicineHandlers;
 using MaakJeNietDrugLogic.Handlers.AccountHandlers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using MaakJeNietDrugLogic;
 using MaakJeNietDrugAPI.Handlers.AccountHandlers;
-using Microsoft.EntityFrameworkCore.Design;
 using MaakJeNietDrugLogic.Handlers.IntakeMomentHandlers;
 
 namespace MaakJeNietDrug
@@ -55,8 +45,6 @@ namespace MaakJeNietDrug
             services.AddScoped<IAddIntakeMomentHandler, AddIntakeMomentHandler>();
             services.AddScoped<IDeleteIntakeMomentHandler, DeleteIntakeMomentHandler>();
             services.AddScoped<IPutIntakeMomentHandler, PutIntakeMomentHandler>();
-            services.AddSpaStaticFiles(options => options.RootPath = "drug-frontend/dist");
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
