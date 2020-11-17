@@ -40,7 +40,7 @@ namespace MaakJeNietDrug.Controllers
         }
 
         [HttpGet]
-        [Route("IntakeMoment/GetAll{id}")]
+        [Route("IntakeMoment/GetAll/{id}")]
         public IEnumerable<IntakeMoment> GetAll(int id)
         {
             return _getHandler.GetAllByMedicineId(id);

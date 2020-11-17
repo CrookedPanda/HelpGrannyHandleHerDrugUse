@@ -13,8 +13,7 @@ namespace MaakJeNietDrugDAL.ClassesDB
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(
-            "Server=(localdb)\\mssqllocaldb;Database=MaakJeNietDrug;Trusted_Connection=True;MultipleActiveResultSets=true",
+            optionsBuilder.UseMySql("server=78.47.226.85;database=s14_steven;user=u14_ESx54Duey2;password=9D9AQmyF^cpVePcD1R9zE.^g",
             options => options.EnableRetryOnFailure());
         }
     }
