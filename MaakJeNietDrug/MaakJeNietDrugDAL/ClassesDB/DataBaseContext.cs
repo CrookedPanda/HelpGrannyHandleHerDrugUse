@@ -13,7 +13,7 @@ namespace MaakJeNietDrugDAL.ClassesDB
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=78.47.226.85;database=s14_steven;user=u14_ESx54Duey2;password=9D9AQmyF^cpVePcD1R9zE.^g",
+            optionsBuilder.UseMySql("server=studmysql01.fhict.local;database=dbi340421;user=dbi340421;password=Dreaming",
             options => options.EnableRetryOnFailure());
         }
     }
