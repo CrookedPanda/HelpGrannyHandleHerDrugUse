@@ -7,6 +7,7 @@ using MaakJeNietDrugLogic.Model;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Web.Http.Cors;
 
 namespace MaakJeNietDrug.Controllers
 {
@@ -47,9 +48,10 @@ namespace MaakJeNietDrug.Controllers
         }
 
         [HttpDelete]
-        [Route("medicine")]
-        public void Delete([FromBody] Medicine med)
+        [Route("medicine/{id}")]
+        public void Delete(int id)
         {
+            Medicine med = new Medicine(id);
             _deleteHandler.Delete(med);
         }
 

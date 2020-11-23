@@ -13,6 +13,7 @@ namespace MaakJeNietDrug
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -28,7 +29,12 @@ namespace MaakJeNietDrug
             //services.AddDbContextPool<DataBaseContext>(
             //    options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")
             //));
-
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
             DataBaseSeeder.SeedMedicine();
 
             services.AddScoped<IGetMedicinesHandler, GetMedicinesHandler>();
@@ -58,6 +64,8 @@ namespace MaakJeNietDrug
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("MyPolicy");
 
             app.UseAuthorization();
 
