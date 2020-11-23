@@ -50,7 +50,7 @@ namespace MaakJeNietDrug.Controllers
         [Route("IntakeMoment")]
         public void Add([FromBody] IntakeMomentModel moments)
         {
-            IntakeMoment moment = new IntakeMoment(moments.dosage, moments.frequency, Convert.ToDateTime(moments.startDate + " " + moments.time));
+            IntakeMoment moment = new IntakeMoment(moments.medId, moments.dosage, moments.frequency, Convert.ToDateTime(moments.startDate + " " + moments.time));
             _addHandler.Add(moment);
         }
 

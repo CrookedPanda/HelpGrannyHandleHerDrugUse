@@ -8,9 +8,12 @@ namespace MaakJeNietDrugLogic.Handlers.IntakeMomentHandlers
 {
     public class AddIntakeMomentHandler : IAddIntakeMomentHandler
     {
-        public void Add(IntakeMoment momentModel)
+        public void Add(IntakeMoment moment)
         {
             using var context = new DataBaseContext();
+
+            context.IntakeMoments.Add(moment);
+            context.SaveChanges();
         }
     }
 }

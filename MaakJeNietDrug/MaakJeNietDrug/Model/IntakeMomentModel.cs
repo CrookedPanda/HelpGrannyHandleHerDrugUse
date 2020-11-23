@@ -9,13 +9,15 @@ namespace MaakJeNietDrugAPI.Model
 
     public class IntakeMomentModel
     {
+        public int medId { get; set; }
         public string dosage { get; set; }
         public int frequency { get; set; }
 
         public string startDate { get; set; }
         public string time { get; set; }
-        public IntakeMomentModel(string dosage, int frequency, string startDate, string time)
+        public IntakeMomentModel(int medId, string dosage, int frequency, string startDate, string time)
         {
+            this.medId = medId;
             this.frequency = frequency;
             this.dosage = dosage;
             this.startDate = startDate;
