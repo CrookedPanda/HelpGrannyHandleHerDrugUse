@@ -9,18 +9,17 @@ namespace MaakJeNietDrugLogic.Model
 
     public class IntakeMoment
     {
-        public int Id { get; set; }
-        public DateTime Date { get;  set; }
         public int Frequency { get; set; }
-        public int Dosering { get; set; }
-        public int MedicineId { get; set; }
+        public string Dosage { get; set; }
 
-        public IntakeMoment(DateTime date, int frequency, int dosering, Medicine med)
+        public DateTime startDate { get;  set; }
+        public string time { get; private set; }
+        public int Id { get; set; }
+        public IntakeMoment(string dosage, int frequency, DateTime startDate)
         {
-            Date = date;
-            Frequency = frequency;
-            Dosering = dosering;
-            MedicineId = med.Id;
+            this.Frequency = frequency;
+            this.Dosage = dosage;
+            this.startDate = startDate;
         }
 
         public IntakeMoment()
