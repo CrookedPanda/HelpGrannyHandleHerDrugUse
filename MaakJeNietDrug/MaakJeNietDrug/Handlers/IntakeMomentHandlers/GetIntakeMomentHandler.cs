@@ -24,7 +24,13 @@ namespace MaakJeNietDrugLogic.Handlers.IntakeMomentHandlers
 
         public IEnumerable<IntakeMoment> GetAllByMedicineId(int id)
         {
-            return new List<IntakeMoment>();
+            using var context = new DataBaseContext();
+
+            List<IntakeMoment> moments = context.IntakeMoments
+                .Where(o => o.MedicineId == id)
+                .ToList();
+
+            return moments;
         }
     }
 }
