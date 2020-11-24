@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaakJeNietDrugAPI", "MaakJeNietDrug\MaakJeNietDrugAPI.csproj", "{B1E61910-21B0-425E-B3EF-26A5581E9EB8}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaakJeNietDrugLogic", "MaakJeNietDrugLogic\MaakJeNietDrugLogic.csproj", "{FFE9FB82-4EED-4EFE-9552-F0D35549B15F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaakJeNietDrugDAL", "MaakJeNietDrugDAL\MaakJeNietDrugDAL.csproj", "{3E0FFCA3-89B7-4BE8-9D26-E9BC6B57B28A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{B1E61910-21B0-425E-B3EF-26A5581E9EB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1E61910-21B0-425E-B3EF-26A5581E9EB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1E61910-21B0-425E-B3EF-26A5581E9EB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFE9FB82-4EED-4EFE-9552-F0D35549B15F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFE9FB82-4EED-4EFE-9552-F0D35549B15F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFE9FB82-4EED-4EFE-9552-F0D35549B15F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFE9FB82-4EED-4EFE-9552-F0D35549B15F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E0FFCA3-89B7-4BE8-9D26-E9BC6B57B28A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E0FFCA3-89B7-4BE8-9D26-E9BC6B57B28A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E0FFCA3-89B7-4BE8-9D26-E9BC6B57B28A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E0FFCA3-89B7-4BE8-9D26-E9BC6B57B28A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

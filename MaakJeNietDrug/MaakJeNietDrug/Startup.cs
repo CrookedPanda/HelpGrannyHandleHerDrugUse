@@ -1,20 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using MaakJeNietDrugDAL.ClassesDB;
+using MaakJeNietDrugLogic.Handlers.MedicineHandlers;
+using MaakJeNietDrugLogic.Handlers.AccountHandlers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using MaakJeNietDrugAPI.Handlers.AccountHandlers;
+using MaakJeNietDrugLogic.Handlers.IntakeMomentHandlers;
 
 namespace MaakJeNietDrug
 {
     public class Startup
     {
+        
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -26,7 +25,32 @@ namespace MaakJeNietDrug
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSpaStaticFiles(options => options.RootPath = "drug-frontend/dist");
+            // todo: uncomment to use MySQL
+            //services.AddDbContextPool<DataBaseContext>(
+            //    options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")
+            //));
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+            DataBaseSeeder.SeedMedicine();
+
+            services.AddScoped<IGetMedicinesHandler, GetMedicinesHandler>();
+            services.AddScoped<IAddMedicineHandler, AddMedicineHandler>();
+            services.AddScoped<IDeleteMedicineHandler, DeleteMedicineHandler>();
+            services.AddScoped<IPutMedicineHandler, PutMedicineHandler>();
+
+            services.AddScoped<IGetAccountHandler, GetAccountHandler>();
+            services.AddScoped<IAddAccountHandler, AddAccountHandler>();
+            services.AddScoped<IDeleteAccountHandler, DeleteAccountHandler>();
+            services.AddScoped<IPutAccountHandler, PutAccountHandler>();
+
+            services.AddScoped<IGetIntakeMomentHandler, GetIntakeMomentHandler>();
+            services.AddScoped<IAddIntakeMomentHandler, AddIntakeMomentHandler>();
+            services.AddScoped<IDeleteIntakeMomentHandler, DeleteIntakeMomentHandler>();
+            services.AddScoped<IPutIntakeMomentHandler, PutIntakeMomentHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,24 +65,14 @@ namespace MaakJeNietDrug
 
             app.UseRouting();
 
+            app.UseCors("MyPolicy");
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
-
-            // add following statements
-            app.UseSpaStaticFiles();
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "drug-frontend";
-                if (env.IsDevelopment())
-                {
-                    // Launch development server for Vue.js
-                    spa.UseVueDevelopmentServer();
-                }
-            });
+            });           
         }
     }
 }

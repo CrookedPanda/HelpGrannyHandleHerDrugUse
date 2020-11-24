@@ -1,55 +1,65 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MaakJeNietDrugAPI.ClassesLogic;
-using Microsoft.AspNetCore.Http;
+﻿using MaakJeNietDrugAPI.Handlers.AccountHandlers;
+using MaakJeNietDrugAPI.Model;
+using MaakJeNietDrugLogic.ClassesLogic;
+using MaakJeNietDrugLogic.Handlers;
+using MaakJeNietDrugLogic.Handlers.MedicineHandlers;
+using MaakJeNietDrugLogic.Model;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Web.Http.Cors;
 
 namespace MaakJeNietDrug.Controllers
 {
     public class MedicineController : ControllerBase
     {
-        static MedicineCollection medColl = new MedicineCollection();
+        private readonly IGetMedicinesHandler _getHandler;
+        private readonly IAddMedicineHandler _addHandler;
+        private readonly IDeleteMedicineHandler _deleteHandler;
+        private readonly IPutMedicineHandler _putHandler;
 
-        [Route("Medicine/Get/{medId?}")]
-        public Medicine Get(int? medId)
+        public MedicineController(IGetMedicinesHandler getHandler, IAddMedicineHandler addHandler, IDeleteMedicineHandler deleteHandler, IPutMedicineHandler putHandler)
         {
-            if (medId != null)
-            {
-                int id = Convert.ToInt32(medId);
-                return medColl.Get(id);
-            }
-            else
-            {
-                return null;
-            }
-
+            _getHandler = getHandler;
+            _addHandler = addHandler;
+            _deleteHandler = deleteHandler;
+            _putHandler = putHandler;
         }
 
-        [Route("Medicine/GetAll")]
-        public List<Medicine> GetAll()
+        [HttpGet]
+        [Route("medicine")]
+        public IEnumerable<Medicine> GetAll()
         {
-            return medColl.GetAll();
+            return _getHandler.Get();
         }
 
-        [Route("Medicine/Add/{name}/{description}")]
-        public void Add(string name, string description)
+        [HttpGet]
+        [Route("medicine/{id}")]
+        public Medicine Get(int id)
         {
-            Medicine med = new Medicine();
-            foreach(Medicine i in medColl.GetAll())
-            {
-                med = i;
-            }
-
-            med = new Medicine((med.id + 1), name, description);
-            medColl.Add(med);
+            return _getHandler.Get(id);
         }
 
-        [Route("Medicine/Delete/{id}")]
-        public void Add(int id)
+        [HttpPost]
+        [Route("medicine")]
+        public void Add([FromBody] Medicine med)
         {
-            medColl.Delete(id);
+            _addHandler.Add(med);
+        }
+
+        [HttpDelete]
+        [Route("medicine/{id}")]
+        public void Delete(int id)
+        {
+            Medicine med = new Medicine(id);
+            _deleteHandler.Delete(med);
+        }
+
+        [HttpPut]
+        [Route("medicine")]
+        public void Put([FromBody] Medicine med)
+        {
+            _putHandler.Put(med);
         }
 
     }
