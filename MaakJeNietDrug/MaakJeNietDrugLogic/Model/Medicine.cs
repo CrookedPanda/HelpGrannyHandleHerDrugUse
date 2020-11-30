@@ -9,7 +9,7 @@ namespace MaakJeNietDrugLogic.ClassesLogic
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-
+        public string UID { get; set; }
         public List<IntakeMoment> intakeMoments { get; set; }
         
     public Medicine(string name, string description)

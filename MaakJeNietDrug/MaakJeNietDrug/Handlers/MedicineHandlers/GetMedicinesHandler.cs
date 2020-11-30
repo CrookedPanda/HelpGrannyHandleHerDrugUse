@@ -14,11 +14,20 @@ namespace MaakJeNietDrugLogic.Handlers.MedicineHandlers
 
             return context.Medicines.Find(id);
         }
-        public IEnumerable<Medicine> Get()
+        public IEnumerable<Medicine> Get(string id)
         {
             using var context = new DataBaseContext();
+            List<Medicine> medicines = new List<Medicine>();
+            foreach(Medicine med in context.Medicines.ToList())
+            {
+                if(med.UID == id)
+                {
+                    medicines.Add(med);
+                }
+            }
 
-            return context.Medicines.ToList();
+            return medicines;
+            
         }
     }
 }

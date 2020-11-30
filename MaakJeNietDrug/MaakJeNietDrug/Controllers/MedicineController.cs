@@ -7,7 +7,6 @@ using MaakJeNietDrugLogic.Model;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Web.Http.Cors;
 
 namespace MaakJeNietDrug.Controllers
 {
@@ -27,10 +26,10 @@ namespace MaakJeNietDrug.Controllers
         }
 
         [HttpGet]
-        [Route("medicine")]
-        public IEnumerable<Medicine> GetAll()
+        [Route("medicine/{id}")]
+        public IEnumerable<Medicine> GetAll(string id)
         {
-            return _getHandler.Get();
+            return _getHandler.Get(id);
         }
 
         [HttpGet]
@@ -48,10 +47,9 @@ namespace MaakJeNietDrug.Controllers
         }
 
         [HttpDelete]
-        [Route("medicine/{id}")]
-        public void Delete(int id)
+        [Route("medicine")]
+        public void Delete([FromBody] Medicine med)
         {
-            Medicine med = new Medicine(id);
             _deleteHandler.Delete(med);
         }
 
