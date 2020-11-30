@@ -29,5 +29,12 @@ namespace MaakJeNietDrugLogic.Handlers.MedicineHandlers
             return medicines;
             
         }
+
+        public IEnumerable<Medicine> GetAll()
+        {
+            using var context = new DataBaseContext();
+
+            return context.Medicines.ToList();
+        }
     }
 }

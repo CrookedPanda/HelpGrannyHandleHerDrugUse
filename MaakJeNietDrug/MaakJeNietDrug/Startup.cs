@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MaakJeNietDrugAPI.Handlers.AccountHandlers;
 using MaakJeNietDrugLogic.Handlers.IntakeMomentHandlers;
+using Microsoft.EntityFrameworkCore;
 
 namespace MaakJeNietDrug
 {
@@ -35,7 +36,11 @@ namespace MaakJeNietDrug
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
+            //services.AddDbContextPool<DataBaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("dev")));
+
+
             DataBaseSeeder.SeedMedicine();
+
 
             services.AddScoped<IGetMedicinesHandler, GetMedicinesHandler>();
             services.AddScoped<IAddMedicineHandler, AddMedicineHandler>();

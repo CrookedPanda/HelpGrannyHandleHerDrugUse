@@ -55,15 +55,11 @@ namespace MaakJeNietDrug.Controllers
 
         [HttpPost]
         [Route("IntakeMoment")]
-        public void Add([FromBody] IntakeMoments moments)
+        public void Add([FromBody] IntakeMomentModel moments)
         {
 
-            List<IntakeMoment> intakeMoments = new List<IntakeMoment>();
-            foreach(DateTime moment in moments.Dates)
-            {
-                intakeMoments.Add(new IntakeMoment(moment, moments.Frequency, moments.Dosering, new Medicine(moments.Id)));
-            }
-            _addHandler.Add(intakeMoments);
+            IntakeMoment moment = new IntakeMoment(moments.medId, moments.dosage, moments.frequency, Convert.ToDateTime(moments.startDate + " " + moments.time));
+            _addHandler.Add(moment);
         }
 
         [HttpDelete]

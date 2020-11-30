@@ -1,9 +1,10 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MaakJeNietDrugDAL.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class newMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +13,7 @@ namespace MaakJeNietDrugDAL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true)
@@ -27,9 +28,10 @@ namespace MaakJeNietDrugDAL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
+                    Description = table.Column<string>(nullable: true),
+                    UID = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -41,12 +43,12 @@ namespace MaakJeNietDrugDAL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Frequency = table.Column<int>(nullable: false),
                     Dosage = table.Column<string>(nullable: true),
+                    MedicineId = table.Column<int>(nullable: false),
                     startDate = table.Column<DateTime>(nullable: false),
-                    time = table.Column<string>(nullable: true),
-                    MedicineId = table.Column<int>(nullable: true)
+                    time = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -56,7 +58,7 @@ namespace MaakJeNietDrugDAL.Migrations
                         column: x => x.MedicineId,
                         principalTable: "Medicines",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

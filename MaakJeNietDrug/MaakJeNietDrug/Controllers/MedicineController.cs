@@ -26,8 +26,8 @@ namespace MaakJeNietDrug.Controllers
         }
 
         [HttpGet]
-        [Route("medicine/{id}")]
-        public IEnumerable<Medicine> GetAll(string id)
+        [Route("medicine/GetAllByAccountId/{id}")]
+        public IEnumerable<Medicine> GetAllByAccountId(string id)
         {
             return _getHandler.Get(id);
         }
@@ -37,6 +37,13 @@ namespace MaakJeNietDrug.Controllers
         public Medicine Get(int id)
         {
             return _getHandler.Get(id);
+        }
+
+        [HttpGet]
+        [Route("medicine")]
+        public IEnumerable<Medicine> GetAll()
+        {
+            return _getHandler.GetAll();
         }
 
         [HttpPost]
