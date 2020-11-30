@@ -15,12 +15,12 @@ namespace MaakJeNietDrugDAL.ClassesDB
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=studmysql01.fhict.local;database=dbi340421;user=dbi340421;password=Dreaming",
-            options => options.EnableRetryOnFailure());
+            //optionsBuilder.UseMySql("server=studmysql01.fhict.local;database=dbi340421;user=dbi340421;password=Dreaming",
+            //options => options.EnableRetryOnFailure());
 
             //lokale DB
-            //optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB;InitialCatalog=MaakJeNietDrug;Integrated Security=True;ConnectTimeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=Fale",
-            //options => options.EnableRetryOnFailure());
+            optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB;Initial Catalog=MaakJeNietDrug;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False",
+            options => options.EnableRetryOnFailure());
         }
     }
 }
