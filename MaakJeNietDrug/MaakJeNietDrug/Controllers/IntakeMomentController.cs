@@ -71,9 +71,10 @@ namespace MaakJeNietDrug.Controllers
 
         [HttpPut]
         [Route("IntakeMoment")]
-        public void Put([FromBody] IntakeMoment med)
+        public void Put([FromBody] IntakeMomentModel moments)
         {
-            _putHandler.Put(med);
+            IntakeMoment moment = new IntakeMoment(moments.medId, moments.dosage, moments.frequency, Convert.ToDateTime(moments.startDate + " " + moments.time), moments.id);
+            _putHandler.Put(moment);
         }
     }
 }

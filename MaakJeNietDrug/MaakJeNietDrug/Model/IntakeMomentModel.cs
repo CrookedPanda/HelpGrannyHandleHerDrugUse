@@ -12,7 +12,7 @@ namespace MaakJeNietDrugAPI.Model
         public int medId { get; set; }
         public string dosage { get; set; }
         public int frequency { get; set; }
-
+        public int id { get; set; }
         public string startDate { get; set; }
         public string time { get; set; }
         public IntakeMomentModel(int medId, string dosage, int frequency, string startDate, string time)
