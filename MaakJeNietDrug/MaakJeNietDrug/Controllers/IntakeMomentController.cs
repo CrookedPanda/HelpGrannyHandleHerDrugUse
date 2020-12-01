@@ -1,5 +1,4 @@
-﻿using MaakJeNietDrugAPI.Handlers.AccountHandlers;
-using MaakJeNietDrugAPI.Model;
+﻿using MaakJeNietDrugAPI.Model;
 using MaakJeNietDrugLogic.ClassesLogic;
 using MaakJeNietDrugLogic.Handlers;
 using MaakJeNietDrugLogic.Handlers.IntakeMomentHandlers;

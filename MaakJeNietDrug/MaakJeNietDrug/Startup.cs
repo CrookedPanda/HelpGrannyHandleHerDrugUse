@@ -1,14 +1,13 @@
 using MaakJeNietDrugDAL.ClassesDB;
 using MaakJeNietDrugLogic.Handlers.MedicineHandlers;
-using MaakJeNietDrugLogic.Handlers.AccountHandlers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MaakJeNietDrugAPI.Handlers.AccountHandlers;
 using MaakJeNietDrugLogic.Handlers.IntakeMomentHandlers;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace MaakJeNietDrug
 {
@@ -38,7 +37,6 @@ namespace MaakJeNietDrug
             }));
             //services.AddDbContextPool<DataBaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("dev")));
 
-
             DataBaseSeeder.SeedMedicine();
 
 
@@ -46,11 +44,6 @@ namespace MaakJeNietDrug
             services.AddScoped<IAddMedicineHandler, AddMedicineHandler>();
             services.AddScoped<IDeleteMedicineHandler, DeleteMedicineHandler>();
             services.AddScoped<IPutMedicineHandler, PutMedicineHandler>();
-
-            services.AddScoped<IGetAccountHandler, GetAccountHandler>();
-            services.AddScoped<IAddAccountHandler, AddAccountHandler>();
-            services.AddScoped<IDeleteAccountHandler, DeleteAccountHandler>();
-            services.AddScoped<IPutAccountHandler, PutAccountHandler>();
 
             services.AddScoped<IGetIntakeMomentHandler, GetIntakeMomentHandler>();
             services.AddScoped<IAddIntakeMomentHandler, AddIntakeMomentHandler>();

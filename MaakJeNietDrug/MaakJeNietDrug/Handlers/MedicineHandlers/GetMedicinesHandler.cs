@@ -8,17 +8,21 @@ namespace MaakJeNietDrugLogic.Handlers.MedicineHandlers
 {
     public class GetMedicinesHandler : IGetMedicinesHandler
     {
+        DataBaseContext _context;
+
+        public GetMedicinesHandler(DataBaseContext context)
+        {
+            _context = context;
+        }
         public Medicine Get(int id)
         {
-            using var context = new DataBaseContext();
 
-            return context.Medicines.Find(id);
+            return _context.Medicines.Find(id);
         }
         public IEnumerable<Medicine> Get(string id)
         {
-            using var context = new DataBaseContext();
             List<Medicine> medicines = new List<Medicine>();
-            foreach(Medicine med in context.Medicines.ToList())
+            foreach(Medicine med in _context.Medicines.ToList())
             {
                 if(med.UID == id)
                 {
@@ -32,9 +36,8 @@ namespace MaakJeNietDrugLogic.Handlers.MedicineHandlers
 
         public IEnumerable<Medicine> GetAll()
         {
-            using var context = new DataBaseContext();
 
-            return context.Medicines.ToList();
+            return _context.Medicines.ToList();
         }
     }
 }

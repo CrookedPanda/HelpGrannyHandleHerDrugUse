@@ -21,11 +21,6 @@ namespace MaakJeNietDrugDAL.ClassesDB
                 context.Medicines.Add(new Medicine("medicijn 2", "Dit is medicijn 2", "2"));
                 context.Medicines.Add(new Medicine("medicijn 3", "Dit is medicijn 3", "3"));
                 context.Medicines.Add(new Medicine("medicijn 4", "Dit is medicijn 4", "4"));
-
-                context.Accounts.Add(new Account("account 1", "wachtwoord 1", "account1@hotmail.com"));
-                context.Accounts.Add(new Account("account 2", "wachtwoord 2", "account2@hotmail.com"));
-                context.Accounts.Add(new Account("account 3", "wachtwoord 3", "account3hotmail.com"));
-                context.Accounts.Add(new Account("account 4", "wachtwoord 4", "account4@hotmail.com"));
             }
 
             context.SaveChanges();

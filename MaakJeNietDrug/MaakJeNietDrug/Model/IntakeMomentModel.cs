@@ -22,6 +22,7 @@ namespace MaakJeNietDrugAPI.Model
             this.dosage = dosage;
             this.startDate = startDate;
             this.time = time;
+
         }
 
         public IntakeMomentModel()
