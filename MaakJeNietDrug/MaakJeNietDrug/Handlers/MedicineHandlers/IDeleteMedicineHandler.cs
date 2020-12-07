@@ -4,6 +4,6 @@ namespace MaakJeNietDrugLogic.Handlers.MedicineHandlers
 {
     public interface IDeleteMedicineHandler
     {
-        public void Delete(Medicine med);
+        public void Delete(int id);
     }
 }

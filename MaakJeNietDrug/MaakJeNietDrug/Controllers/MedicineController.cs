@@ -53,10 +53,10 @@ namespace MaakJeNietDrug.Controllers
         }
 
         [HttpDelete]
-        [Route("medicine")]
-        public void Delete([FromBody] Medicine med)
+        [Route("medicine/{id}")]
+        public void Delete(int id)
         {
-            _deleteHandler.Delete(med);
+            _deleteHandler.Delete(id);
         }
 
         [HttpPut]
