@@ -35,7 +35,7 @@ namespace MaakJeNietDrug
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
-            //services.AddDbContextPool<DataBaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("dev")));
+            services.AddDbContextPool<DataBaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("dev")));
 
             DataBaseSeeder.SeedMedicine();
 
