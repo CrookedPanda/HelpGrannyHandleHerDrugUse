@@ -16,7 +16,7 @@ namespace MaakJeNietDrugLogic.Model
         public int Id { get; set; }
         public IntakeMoment(int medId, string dosage, int frequency, DateTime startDate)
         {
-            MedicineId = medId;
+            this.MedicineId = medId;
             this.Frequency = frequency;
             this.Dosage = dosage;
             this.startDate = startDate;
@@ -24,7 +24,7 @@ namespace MaakJeNietDrugLogic.Model
 
         public IntakeMoment(int medId, string dosage, int frequency, DateTime startDate, int id)
         {
-            MedicineId = medId;
+            this.MedicineId = medId;
             this.Frequency = frequency;
             this.Dosage = dosage;
             this.startDate = startDate;

@@ -59,7 +59,7 @@ namespace MaakJeNietDrugTest
         }
 
         [Fact]
-        public async Task PutMedicine()
+        public async Task UpdateMedicine()
         {
             //Arrange
             using var context = new DataBaseContext();
