@@ -63,12 +63,13 @@ namespace MaakJeNietDrugTest
         {
             //Arrange
             using var context = new DataBaseContext();
-            Medicine medi = new Medicine { Id = 5, Name = "test6", UID = "re124sa23", Description = "Description of test6" };
-            Medicine medi2 = context.Medicines.Find(5);
+            int medId = 2;
+            Medicine medi = new Medicine { Id = medId, Name = "test6", UID = "re124sa23", Description = "Description of test6" };
             //Act
             var stringContent = new StringContent(JsonConvert.SerializeObject(medi), Encoding.UTF8, "application/json");
             var response = await _client.PutAsync("/medicine/", stringContent);
             response.EnsureSuccessStatusCode();
+            Medicine medi2 = context.Medicines.Find(medId);
             //Assert
             Assert.Equal(medi.Name, medi2.Name);
             Assert.Equal(medi.UID, medi2.UID);

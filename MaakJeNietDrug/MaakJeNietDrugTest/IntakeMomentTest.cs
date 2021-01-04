@@ -71,7 +71,19 @@ namespace MaakJeNietDrugTest
         [Fact]
         public async Task ReturnIntakeMomentFromUser()
         {
+            int userId = 1;
+            using var context = new DataBaseContext();
             //yet to be written
+            //var text = context.IntakeMoments.Join(context.Medicines, i => i.MedicineId, m => m.Id, (i, m) => new { medicinename = m.Name }).Take(1);
+            var intakes = from Medicine in context.Medicines
+                          join IntakeMoments in context.IntakeMoments on Medicine.Id equals IntakeMoments.MedicineId
+                          where Medicine.UID == userId.ToString()
+                          select IntakeMoments;
+            var response = await _client.GetAsync("/IntakeMoment/GetAllByAccountId/" + userId.ToString());
+            response.EnsureSuccessStatusCode();
+            var responseString = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<List<IntakeMoment>>(responseString);
+            Assert.Equal(intakes.Count(), result.Count());
         }
 
         [Fact]
@@ -79,23 +91,36 @@ namespace MaakJeNietDrugTest
         {
             //Arrange
             using var context = new DataBaseContext();
-            int medId = 1;
-            IntakeMomentModel intake = new IntakeMomentModel(medId, "1 md", 1, "20-Jan-1992", "20:23:14", 3);
-            var text = context.IntakeMoments.Join(context.Medicines, i => i.MedicineId, m => m.Id, (i, m) => new { medicinename = m.Name }).Take(1);
+            int medId = 2;
+            string newDate = "20/01/1994";
+            string newTime = "20:22:14";
+            string dosage = "3 md";
+            int id = 3;
+            IntakeMomentModel intake = new IntakeMomentModel(medId, dosage, 1, newDate, newTime, id);
             //Act
             var stringContent = new StringContent(JsonConvert.SerializeObject(intake), Encoding.UTF8, "application/json");
             var response = await _client.PutAsync("/IntakeMoment/", stringContent);
             response.EnsureSuccessStatusCode();
-            //Assert
-            //Assert.Equal(medi.Name, medi2.Name);
-            //Assert.Equal(medi.UID, medi2.UID);
-            //Assert.Equal(medi.Description, medi2.Description);
+            List<IntakeMoment> moment = context.IntakeMoments
+                .Where(o => o.MedicineId == medId)
+                .ToList();
+            Assert.Equal(newDate + " " + newTime, moment[0].startDate.ToString());
+            Assert.Equal(dosage, moment[0].Dosage);
         }
 
         [Fact]
         public async Task DeleteIntakeMoment()
         {
-            //rewrite code
+            //Arrange
+            using var context = new DataBaseContext();
+            
+            int count = context.IntakeMoments.ToList().Count();
+            //Act
+            var response = await _client.DeleteAsync("/IntakeMoment/2");
+
+            response.EnsureSuccessStatusCode();
+            //Assert
+            Assert.Equal(count - 1, context.IntakeMoments.ToList().Count());
         }
     }
 }
