@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 using System.Text;
 
 namespace MaakJeNietDrugAPI.Model
@@ -37,6 +38,24 @@ namespace MaakJeNietDrugAPI.Model
         public IntakeMomentModel()
         {
 
+        }
+
+        public DateTime GetDateTime(string s, string format, CultureInfo culture)
+        {
+            try
+            {
+                var r = DateTime.ParseExact(s: s, format: format,
+                                        provider: culture);
+                return r;
+            }
+            catch (FormatException)
+            {
+                throw;
+            }
+            catch (CultureNotFoundException)
+            {
+                throw; // Given Culture is not supported culture
+            }
         }
     }
 }
