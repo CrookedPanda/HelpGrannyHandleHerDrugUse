@@ -19,6 +19,7 @@ namespace MaakJeNietDrugTest
 {
     public class IntakeMomentTest
     {
+        /*
         private readonly TestServer _server;
         private readonly HttpClient _client;
 
@@ -122,5 +123,6 @@ namespace MaakJeNietDrugTest
             //Assert
             Assert.Equal(count - 1, context.IntakeMoments.ToList().Count());
         }
+        */
     }
 }
