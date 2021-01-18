@@ -8,11 +8,12 @@ namespace MaakJeNietDrugLogic.Handlers.IntakeMomentHandlers
 {
     public class DeleteIntakeMomentHandler : IDeleteIntakeMomentHandler
     {
-        public void Delete(IntakeMoment moment)
+        public void Delete(int id)
         {
             using var context = new DataBaseContext();
 
-            context.IntakeMoments.Remove(moment);
+            IntakeMoment intake = context.IntakeMoments.Find(id);
+            context.IntakeMoments.Remove(intake);
             context.SaveChanges();
         }
     }

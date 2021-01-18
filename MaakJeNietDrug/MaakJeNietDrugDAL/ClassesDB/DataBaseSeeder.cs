@@ -1,4 +1,6 @@
 ﻿using MaakJeNietDrugLogic.ClassesLogic;
+using MaakJeNietDrugLogic.Model;
+using System;
 using System.Linq;
 
 namespace MaakJeNietDrugDAL.ClassesDB
@@ -17,17 +19,25 @@ namespace MaakJeNietDrugDAL.ClassesDB
             }
             else
             {
-                context.Medicines.Add(new Medicine("medicijn 1", "Dit is medicijn 1"));
-                context.Medicines.Add(new Medicine("medicijn 2", "Dit is medicijn 2"));
-                context.Medicines.Add(new Medicine("medicijn 3", "Dit is medicijn 3"));
-                context.Medicines.Add(new Medicine("medicijn 4", "Dit is medicijn 4"));
-
-                context.Accounts.Add(new Account("account 1", "wachtwoord 1", "account1@hotmail.com"));
-                context.Accounts.Add(new Account("account 2", "wachtwoord 2", "account2@hotmail.com"));
-                context.Accounts.Add(new Account("account 3", "wachtwoord 3", "account3hotmail.com"));
-                context.Accounts.Add(new Account("account 4", "wachtwoord 4", "account4@hotmail.com"));
+                context.Medicines.Add(new Medicine("medicijn 1", "Dit is medicijn 1", "1"));
+                context.Medicines.Add(new Medicine("medicijn 2", "Dit is medicijn 2", "2"));
+                context.Medicines.Add(new Medicine("medicijn 3", "Dit is medicijn 3", "3"));
+                context.Medicines.Add(new Medicine("medicijn 4", "Dit is medicijn 4", "4"));
             }
+            context.SaveChanges();
 
+            var entities2 = context.IntakeMoments.ToList();
+            if (entities.Any())
+            {
+                return;
+            }
+            else
+            {
+                context.IntakeMoments.Add(new IntakeMoment(1, "md 1", 1, Convert.ToDateTime("01/01/2001 01:01:01")));
+                context.IntakeMoments.Add(new IntakeMoment(2, "md 2", 2, Convert.ToDateTime("02/02/2002 02:02:02")));
+                context.IntakeMoments.Add(new IntakeMoment(3, "md 3", 3, Convert.ToDateTime("03/03/2003 03:03:03")));
+                context.IntakeMoments.Add(new IntakeMoment(4, "md 4", 4, Convert.ToDateTime("04/04/2004 04:04:04")));
+            }
             context.SaveChanges();
         }
     }

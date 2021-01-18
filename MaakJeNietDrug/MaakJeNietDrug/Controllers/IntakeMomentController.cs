@@ -1,5 +1,4 @@
-﻿using MaakJeNietDrugAPI.Handlers.AccountHandlers;
-using MaakJeNietDrugAPI.Model;
+﻿using MaakJeNietDrugAPI.Model;
 using MaakJeNietDrugLogic.ClassesLogic;
 using MaakJeNietDrugLogic.Handlers;
 using MaakJeNietDrugLogic.Handlers.IntakeMomentHandlers;
@@ -40,33 +39,41 @@ namespace MaakJeNietDrug.Controllers
         }
 
         [HttpGet]
-        [Route("IntakeMoment/GetAll/{id}")]
-        public IEnumerable<IntakeMoment> GetAll(int id)
+        [Route("IntakeMoment/GetAllByMedicineId/{id}")]
+        public IEnumerable<IntakeMoment> GetAllByMedicineId(int id)
         {
             return _getHandler.GetAllByMedicineId(id);
+        }
+
+        [HttpGet]
+        [Route("IntakeMoment/GetAllByAccountId/{id}")]
+        public IEnumerable<IntakeMoment> GetAllByAccountId(string id)
+        {
+            return _getHandler.GetAllByAccountId(id);
         }
 
         [HttpPost]
         [Route("IntakeMoment")]
         public void Add([FromBody] IntakeMomentModel moments)
         {
+
             IntakeMoment moment = new IntakeMoment(moments.medId, moments.dosage, moments.frequency, Convert.ToDateTime(moments.startDate + " " + moments.time));
             _addHandler.Add(moment);
         }
 
         [HttpDelete]
-        [Route("IntakeMoment")]
-        public void Delete([FromBody] IntakeMoment moment)
+        [Route("IntakeMoment/{id}")]
+        public void Delete(int id)
         {
-
-            _deleteHandler.Delete(moment);
+            _deleteHandler.Delete(id);
         }
 
         [HttpPut]
         [Route("IntakeMoment")]
-        public void Put([FromBody] IntakeMoment med)
+        public void Put([FromBody] IntakeMomentModel moments)
         {
-            _putHandler.Put(med);
+            IntakeMoment moment = new IntakeMoment(moments.medId, moments.dosage, moments.frequency, Convert.ToDateTime(moments.startDate + " " + moments.time), moments.id);
+            _putHandler.Put(moment);
         }
     }
 }

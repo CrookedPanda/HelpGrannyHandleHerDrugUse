@@ -1,13 +1,17 @@
-﻿using MaakJeNietDrugAPI.Handlers.AccountHandlers;
-using MaakJeNietDrugAPI.Model;
+﻿using MaakJeNietDrugAPI.Model;
 using MaakJeNietDrugLogic.ClassesLogic;
 using MaakJeNietDrugLogic.Handlers;
 using MaakJeNietDrugLogic.Handlers.MedicineHandlers;
 using MaakJeNietDrugLogic.Model;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Web.Http.Cors;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace MaakJeNietDrug.Controllers
 {
@@ -27,10 +31,10 @@ namespace MaakJeNietDrug.Controllers
         }
 
         [HttpGet]
-        [Route("medicine")]
-        public IEnumerable<Medicine> GetAll()
+        [Route("medicine/GetAllByAccountId/{id}")]
+        public IEnumerable<Medicine> GetAllByAccountId(string id)
         {
-            return _getHandler.Get();
+            return _getHandler.Get(id);
         }
 
         [HttpGet]
@@ -38,6 +42,22 @@ namespace MaakJeNietDrug.Controllers
         public Medicine Get(int id)
         {
             return _getHandler.Get(id);
+        }
+
+        [HttpGet]
+        [Route("medicine")]
+        public IEnumerable<Medicine> GetAll()
+        {
+            return _getHandler.GetAll();
+        }
+
+        [HttpGet]
+        [Route("medicine/sideeffects/{id}")]
+        public async Task<List<string>> GetSideEffects(int id)
+        {
+            Medicine med = _getHandler.Get(id);
+
+            return await apiCall(med);
         }
 
         [HttpPost]
@@ -51,8 +71,7 @@ namespace MaakJeNietDrug.Controllers
         [Route("medicine/{id}")]
         public void Delete(int id)
         {
-            Medicine med = new Medicine(id);
-            _deleteHandler.Delete(med);
+            _deleteHandler.Delete(id);
         }
 
         [HttpPut]
@@ -62,5 +81,33 @@ namespace MaakJeNietDrug.Controllers
             _putHandler.Put(med);
         }
 
+        private async Task<List<String>> apiCall(Medicine med)
+        {
+            List<string> effects = new List<string>();
+
+            UriBuilder builder = new UriBuilder("https://api.fda.gov/drug/event.json?");
+            builder.Query = "search=patient.drug.medicinalproduct:" + med.Name + "&limit=10";
+
+            HttpClient client = new HttpClient();
+            var reponse = await client.GetAsync(builder.Uri);
+            string responseBody = await reponse.Content.ReadAsStringAsync();
+
+
+            foreach(Result res in JsonConvert.DeserializeObject<CallResult>(responseBody).results)
+            {
+                foreach (Reaction reaction in res.patient.reaction)
+                {
+                    string reac = reaction.reactionmeddrapt.ToLower();
+                    reac = reac.First().ToString().ToUpper() + reac.Substring(1);
+                    effects.Add(reac);
+                    
+
+                }
+            }
+            effects = effects.Distinct().ToList();
+            effects.Sort();
+            return effects;
+
+        }
     }
 }

@@ -9,13 +9,20 @@ namespace MaakJeNietDrugLogic.ClassesLogic
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-
+        public string UID { get; set; }
         public List<IntakeMoment> intakeMoments { get; set; }
-        
-    public Medicine(string name, string description)
+
+        public Medicine(string name, string description)
         {
             Name = name;
             Description = description;
+        }
+
+        public Medicine(string name, string description, string uid)
+        {
+            Name = name;
+            Description = description;
+            UID = uid;
         }
         public Medicine(int id)
         {

@@ -10,15 +10,32 @@ namespace MaakJeNietDrugLogic.Handlers.MedicineHandlers
     {
         public Medicine Get(int id)
         {
-            using var context = new DataBaseContext();
+            using var _context = new DataBaseContext();
 
-            return context.Medicines.Find(id);
+            return _context.Medicines.Find(id);
         }
-        public IEnumerable<Medicine> Get()
+        public IEnumerable<Medicine> Get(string id)
         {
-            using var context = new DataBaseContext();
+            using var _context = new DataBaseContext();
 
-            return context.Medicines.ToList();
+            List<Medicine> medicines = new List<Medicine>();
+            foreach(Medicine med in _context.Medicines.ToList())
+            {
+                if(med.UID == id)
+                {
+                    medicines.Add(med);
+                }
+            }
+
+            return medicines;
+            
+        }
+
+        public IEnumerable<Medicine> GetAll()
+        {
+            using var _context = new DataBaseContext();
+
+            return _context.Medicines.ToList();
         }
     }
 }

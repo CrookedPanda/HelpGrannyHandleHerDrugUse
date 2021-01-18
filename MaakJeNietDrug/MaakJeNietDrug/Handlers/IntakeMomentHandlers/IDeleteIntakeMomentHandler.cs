@@ -5,6 +5,6 @@ namespace MaakJeNietDrugLogic.Handlers.IntakeMomentHandlers
 {
     public interface IDeleteIntakeMomentHandler
     {
-        public void Delete(IntakeMoment moment);
+        public void Delete(int id);
     }
 }
