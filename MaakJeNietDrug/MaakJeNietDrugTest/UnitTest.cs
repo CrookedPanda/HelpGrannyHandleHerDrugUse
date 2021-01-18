@@ -13,6 +13,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -34,7 +35,7 @@ namespace MaakJeNietDrugTest
             _client = _server.CreateClient();
             
             EndDate = Convert.ToDateTime(Date + " " + Time);
-
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-GB");
         }
 
         [Fact]
@@ -43,7 +44,7 @@ namespace MaakJeNietDrugTest
             //arrange
             IntakeMomentModel intake = new IntakeMomentModel { startDate = "24-07-2020", time = "01:01:01" };
             //act
-            DateTime date = intake.GetDateTime(intake.startDate + " " + intake.time, "dd-MM-yyyy HH:mm:ss", null);
+            DateTime date = intake.GetDateTime(intake.startDate + " " + intake.time, "dd-MM-yyyy HH:mm:ss", CultureInfo.CurrentCulture);
             //assert
             Assert.Equal(EndDate, date);
             //arrange
@@ -55,7 +56,7 @@ namespace MaakJeNietDrugTest
             //arrange
             IntakeMomentModel intake = new IntakeMomentModel { startDate = "24/07/2020", time = "01:01:01" };
             //act
-            DateTime date = intake.GetDateTime(intake.startDate + " " + intake.time, "dd/MM/yyyy HH:mm:ss" , null);
+            DateTime date = intake.GetDateTime(intake.startDate + " " + intake.time, "dd/MM/yyyy HH:mm:ss" , CultureInfo.CurrentCulture);
             //assert
             Assert.Equal(EndDate, date);
         }
@@ -66,7 +67,7 @@ namespace MaakJeNietDrugTest
             //arrange
             IntakeMomentModel intake = new IntakeMomentModel { startDate = "24-07-2020", time = "01:01:01" };
             //act
-            DateTime date = intake.GetDateTime(intake.startDate, "dd-MM-yyyy", null);
+            DateTime date = intake.GetDateTime(intake.startDate, "dd-MM-yyyy", CultureInfo.CurrentCulture);
             //assert
             Assert.Equal(Convert.ToDateTime(Date), date);
         }
@@ -77,7 +78,7 @@ namespace MaakJeNietDrugTest
             //arrange
             IntakeMomentModel intake = new IntakeMomentModel { startDate = "24-07-2020", time = "01:01:01" };
             //act
-            DateTime date = intake.GetDateTime(intake.time, "HH:mm:ss", null);
+            DateTime date = intake.GetDateTime(intake.time, "HH:mm:ss", CultureInfo.CurrentCulture);
             //assert
             Assert.Equal(Convert.ToDateTime(Time), date);
         }
