@@ -36,10 +36,8 @@ steps:
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
-    script: |
-      script: 'Write-Host "Setting up the date time for build variable"
-      $date=$(Get-Date -format yyyyMMdd-Hmmss)
-      Write-Host "##vso[task.setvariable variable=foo]$date"'
+    script: 'Set-TimeZone -Id "Western European Time"'
+    errorActionPreference: 'continue'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
