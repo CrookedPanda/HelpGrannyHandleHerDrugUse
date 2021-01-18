@@ -41,12 +41,12 @@ namespace MaakJeNietDrugAPI.Model
 
         }
 
-        public DateTime GetDateTime(string s, string format, CultureInfo culture)
+        public DateTime GetDateTime(string s, string format)
         {
             try
             {
                 var r = DateTime.ParseExact(s: s, format: format,
-                                        provider: culture);
+                                        provider: CultureInfo.InvariantCulture);
                 return r;
             }
             catch (FormatException)
