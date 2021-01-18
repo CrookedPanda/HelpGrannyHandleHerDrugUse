@@ -45,8 +45,8 @@ namespace MaakJeNietDrugAPI.Model
         {
             try
             {
-                var r = DateTime.ParseExact(s: s, format: format,
-                                        provider: CultureInfo.InvariantCulture);
+                var r = DateTime.Parse(s: s,
+                                        provider: new CultureInfo("en-GB"));
                 return r;
             }
             catch (FormatException)
