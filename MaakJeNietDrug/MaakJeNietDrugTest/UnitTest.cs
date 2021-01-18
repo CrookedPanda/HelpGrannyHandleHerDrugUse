@@ -21,7 +21,7 @@ namespace MaakJeNietDrugTest
 {
     public class UnitTest
     {
-        private readonly TestServer _server;
+        /*private readonly TestServer _server;
         private readonly HttpClient _client;
         DateTime EndDate = new DateTime();
         string Date = "24-07-2020";
@@ -80,6 +80,6 @@ namespace MaakJeNietDrugTest
             DateTime date = intake.GetDateTime(intake.time, "HH:mm:ss");
             //assert
             Assert.Equal(Convert.ToDateTime(Time), date);
-        }
+        }*/
     }
 }
